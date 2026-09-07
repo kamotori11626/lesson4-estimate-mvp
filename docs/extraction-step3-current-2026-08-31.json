@@ -1,0 +1,684 @@
+{
+  "checked_at": "2026-08-31T09:51:06.495Z",
+  "curriculum": "https://master.tech-camp.in/v2/curriculums/15327",
+  "criteria": [
+    "coverage",
+    "accuracy",
+    "missing_information",
+    "fixed_schema"
+  ],
+  "new_external_ai_requests": 0,
+  "source": {
+    "filename": "12_見積依頼ログ.csv",
+    "sha256": "deece79bca09f195c1d0e87be60c45115f58266164b25a513dec66139bf6c395",
+    "original_copy_identical": true,
+    "rows": 1000,
+    "headers": [
+      "rfq_id",
+      "received_date",
+      "customer_name",
+      "sales_rep",
+      "request_channel",
+      "product_text",
+      "quantity",
+      "requested_delivery_date",
+      "has_drawing",
+      "missing_info_flag",
+      "quote_submitted_date",
+      "quote_amount",
+      "gross_margin_rate",
+      "order_result",
+      "lost_reason",
+      "follow_up_done",
+      "required_tech_review",
+      "required_supplier_quote"
+    ],
+    "original_email_body_present": false,
+    "rows_used": [
+      {
+        "sample_id": "clear",
+        "csv_line_including_header": 4,
+        "rfq_id": "RFQ-00003",
+        "received_date": "2025-06-08",
+        "product_text": "ALBKT22",
+        "quantity": 100,
+        "requested_delivery_date": "2025-06-20",
+        "column_count": 18,
+        "header_column_count": 18
+      },
+      {
+        "sample_id": "missing",
+        "csv_line_including_header": 2,
+        "rfq_id": "RFQ-00001",
+        "received_date": "2026-01-06",
+        "product_text": "PPSカバー80 公差不明",
+        "quantity": 1,
+        "requested_delivery_date": "2026-02-08",
+        "column_count": 18,
+        "header_column_count": 18
+      },
+      {
+        "sample_id": "ambiguous",
+        "csv_line_including_header": 5,
+        "rfq_id": "RFQ-00004",
+        "received_date": "2025-11-03",
+        "product_text": "MCナイロンプレート300 前回同様",
+        "quantity": 1,
+        "requested_delivery_date": "2025-12-17",
+        "column_count": 18,
+        "header_column_count": 18
+      }
+    ],
+    "caveat": "Reconstructed labelled test emails, not original emails. Customer names, greeting, units, time-of-day and case classification are test data. Ambiguous delivery is deliberately replaced; do not treat it as the CSV date."
+  },
+  "stored_actual_ai": [
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "request_id": "698975ed-71c6-4c89-b2c7-bd2f0c10df04",
+      "run_id": "06660645-e98f-4af8-bfd1-f81155bc382f",
+      "started_at": "2026-08-31T03:43:55.901Z",
+      "model": "gemini-3.5-flash-lite",
+      "method": "gemini_fields",
+      "external_attempts_at_original_execution": 1,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "material": null,
+        "quantity": 100,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": "ALBKT22",
+        "product_name": null,
+        "customer_name": "検証用顧客A",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2025-06-20"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [],
+      "expected_ambiguity": [],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": true,
+      "api_matches_db": true,
+      "events": [
+        "started",
+        "finished"
+      ]
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "request_id": "186e36f8-c889-4111-8ce7-cb7a37b6fe23",
+      "run_id": "20a93087-e512-4023-8579-a041a720e9b5",
+      "started_at": "2026-08-31T03:48:37.591Z",
+      "model": "gemini-3.5-flash-lite",
+      "method": "gemini_fields",
+      "external_attempts_at_original_execution": 1,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "material": null,
+        "quantity": 1,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": null,
+        "product_name": "PPSカバー80",
+        "customer_name": "検証用顧客B",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2026-02-08"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [
+        "tolerance"
+      ],
+      "expected_ambiguity": [
+        "tolerance"
+      ],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": true,
+      "api_matches_db": true,
+      "events": [
+        "started",
+        "finished"
+      ]
+    },
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "request_id": "5c5d2e7c-6964-4695-a9dd-9ed4dfcdd9d0",
+      "run_id": "01e1440f-0ed7-4d6e-a325-8bd2e8d43046",
+      "started_at": "2026-08-31T03:51:48.256Z",
+      "model": "gemini-3.5-flash-lite",
+      "method": "gemini_fields",
+      "external_attempts_at_original_execution": 1,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "material": null,
+        "quantity": 100,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": "ALBKT22",
+        "product_name": null,
+        "customer_name": "検証用顧客A",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2025-06-20"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [],
+      "expected_ambiguity": [],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": true,
+      "api_matches_db": true,
+      "events": [
+        "started",
+        "finished"
+      ]
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "request_id": "39f567c0-45fd-4111-bc5b-c7459192d1c1",
+      "run_id": "e6031c10-fecd-49d3-8e6d-ec166399219c",
+      "started_at": "2026-08-31T03:55:04.488Z",
+      "model": "gemini-3.5-flash-lite",
+      "method": "gemini_fields",
+      "external_attempts_at_original_execution": 1,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "material": null,
+        "quantity": 1,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": null,
+        "product_name": "PPSカバー80",
+        "customer_name": "検証用顧客B",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2026-02-08"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [
+        "tolerance"
+      ],
+      "expected_ambiguity": [
+        "tolerance"
+      ],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": true,
+      "api_matches_db": true,
+      "events": [
+        "started",
+        "finished"
+      ]
+    },
+    {
+      "id": "ambiguous",
+      "source_rfq": "RFQ-00004",
+      "request_id": "0de315b1-f1d4-4b75-af11-41ba0c2e3d9d",
+      "run_id": "5e6a1668-8841-496b-8e95-cfe67f2bded3",
+      "started_at": "2026-08-31T03:56:29.211Z",
+      "model": "gemini-3.5-flash-lite",
+      "method": "gemini_fields",
+      "external_attempts_at_original_execution": 1,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "material": null,
+        "quantity": 1,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": null,
+        "product_name": "MCナイロンプレート300",
+        "customer_name": "検証用顧客C",
+        "quantity_unit": "枚",
+        "requested_delivery_date": null
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "expected_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": true,
+      "api_matches_db": true,
+      "events": [
+        "started",
+        "finished"
+      ]
+    }
+  ],
+  "local_current": [
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "request_id": "5f7a0055-f2ec-4131-8408-f9ae739aacbb",
+      "run_id": "399d82d5-b64b-4aae-b688-6488bfcb3788",
+      "started_at": "2026-08-31T09:51:06.687Z",
+      "model": null,
+      "method": "local_baseline",
+      "external_attempts_at_original_execution": 0,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [],
+      "expected_ambiguity": [],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": false,
+      "http_status": 200,
+      "api_matches_db": true
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "request_id": "d20ced7e-699b-42e9-a478-066d620965f6",
+      "run_id": "d1013f53-dc15-4b89-bea2-9c6d2c71202b",
+      "started_at": "2026-08-31T09:51:06.711Z",
+      "model": null,
+      "method": "local_baseline",
+      "external_attempts_at_original_execution": 0,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_ambiguity": [
+        "tolerance"
+      ],
+      "expected_ambiguity": [
+        "tolerance"
+      ],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": false,
+      "http_status": 200,
+      "api_matches_db": true
+    },
+    {
+      "id": "ambiguous",
+      "source_rfq": "RFQ-00004",
+      "request_id": "eb0160b0-c6a8-47c1-9842-8875e6c685f5",
+      "run_id": "f24965aa-5e3a-44cc-a704-72f6fca2dc1c",
+      "started_at": "2026-08-31T09:51:06.720Z",
+      "model": null,
+      "method": "local_baseline",
+      "external_attempts_at_original_execution": 0,
+      "checks": {
+        "coverage": true,
+        "accuracy": true,
+        "missing_information": true,
+        "fixed_schema": true,
+        "source_evidence": true,
+        "pending_review": true,
+        "sample_input_match": true,
+        "current_version": true,
+        "unedited_extraction": true
+      },
+      "pass": true,
+      "values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "expected_values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "differences": [],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "expected_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "quote_problems": [],
+      "ambiguous_fields_without_quote": [],
+      "actual_ai_extraction_pass": false,
+      "http_status": 200,
+      "api_matches_db": true
+    }
+  ],
+  "scope_controls": [
+    {
+      "id": "multiple",
+      "run_id": "82ea5a2c-3b61-47fd-9956-fb4456980d7c",
+      "schema_pass": true,
+      "expected_code": "MULTIPLE_ITEMS",
+      "warnings": [
+        "MULTIPLE_ITEMS",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 0,
+      "pass": true
+    },
+    {
+      "id": "unrelated",
+      "run_id": "5e970038-91c4-4447-b294-dc109667eb5b",
+      "schema_pass": true,
+      "expected_code": "OUT_OF_SCOPE",
+      "warnings": [
+        "OUT_OF_SCOPE",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 0,
+      "pass": true
+    }
+  ],
+  "stored_actual_ai_records_found": 5,
+  "summary": {
+    "stored_actual_ai_pass": 5,
+    "stored_actual_ai_total": 5,
+    "distinct_actual_ai_inputs": 3,
+    "stored_field_matches_including_nulls": 45,
+    "stored_field_total": 45,
+    "local_current_pass": 3,
+    "local_current_total": 3,
+    "scope_controls_pass": 2,
+    "scope_controls_total": 2,
+    "pass": true,
+    "ai_candidate_field_matches_including_nulls": 40,
+    "ai_candidate_field_total": 40,
+    "customer_form_value_matches": 5
+  },
+  "unit_tests": {
+    "passed": 105,
+    "total": 105,
+    "external_ai_calls": 0
+  }
+}

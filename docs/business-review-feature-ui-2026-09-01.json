@@ -1,0 +1,2074 @@
+{
+  "notice": "架空回答でのChrome画面検証。外部AI送信なし。",
+  "saved": {
+    "output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "product_code"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "requested_delivery_date"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": "MCナイロン",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": "±0.3 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": "300×200×10 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "execution": {
+      "mode": "local",
+      "model": null,
+      "started_at": "2026-08-31T15:33:36.065Z",
+      "completed_at": "2026-08-31T15:33:36.089Z",
+      "rule_version": "extraction-rules-1.3",
+      "identity_mode": "unauthenticated_local",
+      "prompt_version": "extraction-prompt-1.3",
+      "scope_decision": {
+        "outcome": "local_baseline",
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Cです",
+              "source_location": {
+                "end": 8,
+                "start": 0,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "前回同様のお見積りをお願いします",
+              "source_location": {
+                "end": 25,
+                "start": 9,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: MCナイロンプレート300",
+              "source_location": {
+                "end": 44,
+                "start": 27,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1枚",
+              "source_location": {
+                "end": 51,
+                "start": 45,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 来月半ば",
+              "source_location": {
+                "end": 62,
+                "start": 52,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "寸法と公差は前回同様です",
+              "source_location": {
+                "end": 75,
+                "start": 63,
+                "source_id": "request_text"
+              }
+            }
+          ],
+          "classification": "single_labelled"
+        }
+      },
+      "execution_user_id": "local-development",
+      "external_attempts": 0,
+      "extraction_method": "local_baseline",
+      "verified_external_response": false,
+      "verified_external_extraction": false
+    },
+    "revision": 2,
+    "business_review": {
+      "answers": [
+        {
+          "id": "6db2864d-6102-41bf-8890-d73490e9b300",
+          "text": "【架空の検証回答】前回とはSIM-Q-003です。今回もSIM-D-003第2版と同じ仕様で変更なし。材質MCナイロン、寸法300×200×10 mm、公差±0.3 mm、数量1枚。希望する受入日は2025年12月12日〜12月18日のいずれかです。期間内ならどの日でも構いません。納品可能日を回答してください。",
+          "reference": "架空回答SIM-REPLY-C／SIM-Q-003・SIM-D-003第2版（実資料ではない）",
+          "respondent": "検証用顧客C（架空）",
+          "recorded_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "responded_at": "2025-11-04T10:00:00+09:00",
+          "identity_mode": "unauthenticated_local"
+        }
+      ],
+      "version": "business-review-1.0",
+      "delivery": {
+        "end": "2025-12-18",
+        "kind": "window",
+        "start": "2025-12-12"
+      },
+      "saved_at": "2026-08-31T15:34:43.531Z",
+      "recorded_by": "機能検証用の営業役（架空）",
+      "resolutions": {
+        "material": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "quantity": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "tolerance": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "dimensions": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "product_code": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "product_name": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "customer_name": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "quantity_unit": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "prior_reference": {
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "status": "awaiting_reply",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "product_identity": {
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "status": "awaiting_reply",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "requested_delivery_date": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        }
+      },
+      "identity_mode": "unauthenticated_local"
+    },
+    "initial_output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "product_code"
+        },
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "material"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "dimensions"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "tolerance"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "requested_delivery_date"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "review_history": [
+      {
+        "id": "8",
+        "saved_at": "2026-08-31T15:34:43.549Z",
+        "reviewer_id": "local-development",
+        "changes": [
+          {
+            "after": "MCナイロン",
+            "before": null,
+            "field_name": "material"
+          },
+          {
+            "after": "300×200×10 mm",
+            "before": null,
+            "field_name": "dimensions"
+          },
+          {
+            "after": "±0.3 mm",
+            "before": null,
+            "field_name": "tolerance"
+          }
+        ],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-18",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      }
+    ]
+  },
+  "reopened": {
+    "output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "field_name": "product_code",
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning"
+        },
+        {
+          "field_name": "requested_delivery_date",
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": "MCナイロン",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": "±0.3 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": "300×200×10 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "execution": {
+      "mode": "local",
+      "model": null,
+      "started_at": "2026-08-31T15:33:36.065Z",
+      "completed_at": "2026-08-31T15:33:36.089Z",
+      "rule_version": "extraction-rules-1.3",
+      "identity_mode": "unauthenticated_local",
+      "prompt_version": "extraction-prompt-1.3",
+      "scope_decision": {
+        "outcome": "local_baseline",
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Cです",
+              "source_location": {
+                "end": 8,
+                "start": 0,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "前回同様のお見積りをお願いします",
+              "source_location": {
+                "end": 25,
+                "start": 9,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: MCナイロンプレート300",
+              "source_location": {
+                "end": 44,
+                "start": 27,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1枚",
+              "source_location": {
+                "end": 51,
+                "start": 45,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 来月半ば",
+              "source_location": {
+                "end": 62,
+                "start": 52,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "寸法と公差は前回同様です",
+              "source_location": {
+                "end": 75,
+                "start": 63,
+                "source_id": "request_text"
+              }
+            }
+          ],
+          "classification": "single_labelled"
+        }
+      },
+      "execution_user_id": "local-development",
+      "external_attempts": 0,
+      "extraction_method": "local_baseline",
+      "verified_external_response": false,
+      "verified_external_extraction": false
+    },
+    "revision": 3,
+    "business_review": {
+      "answers": [
+        {
+          "id": "6db2864d-6102-41bf-8890-d73490e9b300",
+          "text": "【架空の検証回答】前回とはSIM-Q-003です。今回もSIM-D-003第2版と同じ仕様で変更なし。材質MCナイロン、寸法300×200×10 mm、公差±0.3 mm、数量1枚。希望する受入日は2025年12月12日〜12月18日のいずれかです。期間内ならどの日でも構いません。納品可能日を回答してください。",
+          "reference": "架空回答SIM-REPLY-C／SIM-Q-003・SIM-D-003第2版（実資料ではない）",
+          "respondent": "検証用顧客C（架空）",
+          "recorded_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "responded_at": "2025-11-04T10:00:00+09:00",
+          "identity_mode": "unauthenticated_local"
+        }
+      ],
+      "version": "business-review-1.0",
+      "delivery": {
+        "kind": "window",
+        "start": "2025-12-12",
+        "end": "2025-12-19"
+      },
+      "saved_at": "2026-08-31T15:35:18.885Z",
+      "recorded_by": "機能検証用の営業役（架空）",
+      "resolutions": {
+        "customer_name": {
+          "status": "unresolved",
+          "reason": "",
+          "evidence_ids": []
+        },
+        "product_name": {
+          "status": "unresolved",
+          "reason": "",
+          "evidence_ids": []
+        },
+        "product_code": {
+          "status": "unresolved",
+          "reason": "",
+          "evidence_ids": []
+        },
+        "quantity": {
+          "status": "unresolved",
+          "reason": "",
+          "evidence_ids": []
+        },
+        "quantity_unit": {
+          "status": "unresolved",
+          "reason": "",
+          "evidence_ids": []
+        },
+        "material": {
+          "status": "resolved",
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "dimensions": {
+          "status": "resolved",
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "tolerance": {
+          "status": "resolved",
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "requested_delivery_date": {
+          "status": "unresolved",
+          "reason": "値または希望期間を変更したため再確認が必要です。以前の理由: 架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "product_identity": {
+          "status": "awaiting_reply",
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "prior_reference": {
+          "status": "awaiting_reply",
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        }
+      },
+      "identity_mode": "unauthenticated_local"
+    },
+    "initial_output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "product_code"
+        },
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "material"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "dimensions"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "tolerance"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "requested_delivery_date"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "review_history": [
+      {
+        "id": "9",
+        "saved_at": "2026-08-31T15:35:18.893Z",
+        "reviewer_id": "local-development",
+        "changes": [],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-19",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:35:18.885Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "値または希望期間を変更したため再確認が必要です。以前の理由: 架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "unresolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      },
+      {
+        "id": "8",
+        "saved_at": "2026-08-31T15:34:43.549Z",
+        "reviewer_id": "local-development",
+        "changes": [
+          {
+            "after": "MCナイロン",
+            "before": null,
+            "field_name": "material"
+          },
+          {
+            "after": "300×200×10 mm",
+            "before": null,
+            "field_name": "dimensions"
+          },
+          {
+            "after": "±0.3 mm",
+            "before": null,
+            "field_name": "tolerance"
+          }
+        ],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-18",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      }
+    ],
+    "reopened_topics": [
+      "requested_delivery_date"
+    ],
+    "message": "修正下書き・確認記録を保存しました。正式な確認済み・後工程への引渡しではありません。 値の変更により再確認へ戻した項目があります。"
+  },
+  "final": {
+    "output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "product_code"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "requested_delivery_date"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": "MCナイロン",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": "±0.3 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": "300×200×10 mm",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "execution": {
+      "mode": "local",
+      "model": null,
+      "started_at": "2026-08-31T15:33:36.065Z",
+      "completed_at": "2026-08-31T15:33:36.089Z",
+      "rule_version": "extraction-rules-1.3",
+      "identity_mode": "unauthenticated_local",
+      "prompt_version": "extraction-prompt-1.3",
+      "scope_decision": {
+        "outcome": "local_baseline",
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Cです",
+              "source_location": {
+                "end": 8,
+                "start": 0,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "前回同様のお見積りをお願いします",
+              "source_location": {
+                "end": 25,
+                "start": 9,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: MCナイロンプレート300",
+              "source_location": {
+                "end": 44,
+                "start": 27,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1枚",
+              "source_location": {
+                "end": 51,
+                "start": 45,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 来月半ば",
+              "source_location": {
+                "end": 62,
+                "start": 52,
+                "source_id": "request_text"
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "寸法と公差は前回同様です",
+              "source_location": {
+                "end": 75,
+                "start": 63,
+                "source_id": "request_text"
+              }
+            }
+          ],
+          "classification": "single_labelled"
+        }
+      },
+      "execution_user_id": "local-development",
+      "external_attempts": 0,
+      "extraction_method": "local_baseline",
+      "verified_external_response": false,
+      "verified_external_extraction": false
+    },
+    "revision": 4,
+    "business_review": {
+      "answers": [
+        {
+          "id": "6db2864d-6102-41bf-8890-d73490e9b300",
+          "text": "【架空の検証回答】前回とはSIM-Q-003です。今回もSIM-D-003第2版と同じ仕様で変更なし。材質MCナイロン、寸法300×200×10 mm、公差±0.3 mm、数量1枚。希望する受入日は2025年12月12日〜12月18日のいずれかです。期間内ならどの日でも構いません。納品可能日を回答してください。",
+          "reference": "架空回答SIM-REPLY-C／SIM-Q-003・SIM-D-003第2版（実資料ではない）",
+          "respondent": "検証用顧客C（架空）",
+          "recorded_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "responded_at": "2025-11-04T10:00:00+09:00",
+          "identity_mode": "unauthenticated_local"
+        }
+      ],
+      "version": "business-review-1.0",
+      "delivery": {
+        "end": "2025-12-18",
+        "kind": "window",
+        "start": "2025-12-12"
+      },
+      "saved_at": "2026-08-31T15:35:34.209Z",
+      "recorded_by": "機能検証用の営業役（架空）",
+      "resolutions": {
+        "material": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "quantity": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "tolerance": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "dimensions": {
+          "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "product_code": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "product_name": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "customer_name": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "quantity_unit": {
+          "reason": "",
+          "status": "unresolved",
+          "evidence_ids": []
+        },
+        "prior_reference": {
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "status": "awaiting_reply",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "product_identity": {
+          "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+          "status": "awaiting_reply",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        },
+        "requested_delivery_date": {
+          "reason": "再確認テストで19日に変更した値を、架空回答原文の18日に訂正。回答の12〜18日と一致を再照合した。納品保証ではない。",
+          "status": "resolved",
+          "evidence_ids": [
+            "6db2864d-6102-41bf-8890-d73490e9b300"
+          ]
+        }
+      },
+      "identity_mode": "unauthenticated_local"
+    },
+    "initial_output": {
+      "status": "needs_review",
+      "request_id": "9ef29198-294c-450b-8154-6c23b855e409",
+      "audit_log_id": "cbcc1a3e-bc16-4c5e-ae61-051d583ef8b3",
+      "missing_fields": [
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "product_code"
+        },
+        {
+          "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+          "severity": "warning",
+          "field_name": "material"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "dimensions"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "tolerance"
+        },
+        {
+          "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+          "severity": "warning",
+          "field_name": "requested_delivery_date"
+        }
+      ],
+      "schema_version": "extraction-1.0",
+      "extracted_fields": {
+        "material": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "quantity": {
+          "value": 1,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "tolerance": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "dimensions": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "寸法と公差は前回同様です",
+          "source_location": {
+            "end": 75,
+            "start": 63,
+            "source_id": "request_text"
+          }
+        },
+        "product_code": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": null,
+          "source_location": null
+        },
+        "product_name": {
+          "value": "MCナイロンプレート300",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "MCナイロンプレート300",
+          "source_location": {
+            "end": 44,
+            "start": 31,
+            "source_id": "request_text"
+          }
+        },
+        "customer_name": {
+          "value": "検証用顧客C",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "検証用顧客C",
+          "source_location": {
+            "end": 6,
+            "start": 0,
+            "source_id": "customer_name"
+          }
+        },
+        "quantity_unit": {
+          "value": "枚",
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "1枚",
+          "source_location": {
+            "end": 51,
+            "start": 49,
+            "source_id": "request_text"
+          }
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "confidence": null,
+          "human_status": "pending",
+          "source_quote": "希望納期: 来月半ば",
+          "source_location": {
+            "end": 62,
+            "start": 52,
+            "source_id": "request_text"
+          }
+        }
+      },
+      "warnings_and_holds": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+          "severity": "hold",
+          "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+          "severity": "info",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "severity": "warning",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ]
+    },
+    "review_history": [
+      {
+        "id": "10",
+        "saved_at": "2026-08-31T15:35:34.211Z",
+        "reviewer_id": "local-development",
+        "changes": [],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-18",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:35:34.209Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "再確認テストで19日に変更した値を、架空回答原文の18日に訂正。回答の12〜18日と一致を再照合した。納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      },
+      {
+        "id": "9",
+        "saved_at": "2026-08-31T15:35:18.893Z",
+        "reviewer_id": "local-development",
+        "changes": [],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-19",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:35:18.885Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "値または希望期間を変更したため再確認が必要です。以前の理由: 架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "unresolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      },
+      {
+        "id": "8",
+        "saved_at": "2026-08-31T15:34:43.549Z",
+        "reviewer_id": "local-development",
+        "changes": [
+          {
+            "after": "MCナイロン",
+            "before": null,
+            "field_name": "material"
+          },
+          {
+            "after": "300×200×10 mm",
+            "before": null,
+            "field_name": "dimensions"
+          },
+          {
+            "after": "±0.3 mm",
+            "before": null,
+            "field_name": "tolerance"
+          }
+        ],
+        "business_review": {
+          "version": "business-review-1.0",
+          "delivery": {
+            "end": "2025-12-18",
+            "kind": "window",
+            "start": "2025-12-12"
+          },
+          "saved_at": "2026-08-31T15:34:43.531Z",
+          "recorded_by": "機能検証用の営業役（架空）",
+          "resolutions": {
+            "material": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "quantity": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "tolerance": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "dimensions": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_code": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "product_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "customer_name": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "quantity_unit": {
+              "reason": "",
+              "status": "unresolved",
+              "evidence_ids": []
+            },
+            "prior_reference": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "product_identity": {
+              "reason": "営業が参照する図面・見積の原本を照合し、必要時は技術担当へ確認する。架空参照だけで実在資料確認済みにはしない。",
+              "status": "awaiting_reply",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            },
+            "requested_delivery_date": {
+              "reason": "架空回答に明記された内容と一致。希望日は許容期間の確認であり納品保証ではない。",
+              "status": "resolved",
+              "evidence_ids": [
+                "6db2864d-6102-41bf-8890-d73490e9b300"
+              ]
+            }
+          },
+          "identity_mode": "unauthenticated_local"
+        }
+      }
+    ]
+  }
+}

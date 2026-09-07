@@ -1,0 +1,122 @@
+{
+  "label_version": "business-benchmark-12-v1",
+  "labeled_at": "2026-09-02",
+  "label_status": "course_exercise_simulated_review_accepted",
+  "label_reviewer_role": "模擬営業・技術レビュー（Codex）",
+  "business_owner_approval_applicable": false,
+  "course_exercise_accepted_by_user": true,
+  "label_policy": "検索実行前に、原本の顧客論理名・論理品番・材質・数量が一致する見積を抽出し、複数ある場合は新しい3件までを許容正解とした。加工種別・寸法・公差が入力にないため、それらによる単一正解は作らない。",
+  "cases": [
+    {
+      "id": "E1",
+      "category": "exact",
+      "query": {"customer_name":"日進フードテック株式会社","product_code":"PEEK-GR-10","product_name":"PEEKガイドレール","material":"PEEK","quantity":5,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:日進フドテック",
+      "expected_product_candidate":"product:PEEKGR10",
+      "acceptable_quote_ids":["Q-250809-1421"],
+      "review_basis":"同一顧客・論理品番・材質・数量が一致する見積のうち最新。加工種別等は別途確認する。"
+    },
+    {
+      "id": "E2",
+      "category": "exact",
+      "query": {"customer_name":"青葉精機","product_code":"S45C-PIN-18","product_name":"S45Cピン18","material":"S45C","quantity":50,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:青葉精機",
+      "expected_product_candidate":"product:S45CPIN18",
+      "acceptable_quote_ids":["Q-250905-0617"],
+      "review_basis":"同一顧客・論理品番・材質・数量が一致する見積のうち最新。"
+    },
+    {
+      "id": "E3",
+      "category": "exact",
+      "query": {"customer_name":"北斗包装機械","product_code":"PPS-CVR-80","product_name":"PPSカバー80","material":"PPS","quantity":10,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:北斗包装機械",
+      "expected_product_candidate":"product:PPSCVR80",
+      "acceptable_quote_ids":["Q-250604-0028"],
+      "review_basis":"同一顧客・論理品番・材質・数量が一致する見積のうち最新。"
+    },
+    {
+      "id": "V1",
+      "category": "variant",
+      "query": {"customer_name":"（株）ミナト医療機器","product_code":"AL_BKT_22","product_name":"アルミブラケット22","material":"A5052","quantity":50,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:ミナト医療機器",
+      "expected_product_candidate":"product:ALBKT22",
+      "acceptable_quote_ids":["Q-250807-1170"],
+      "review_basis":"法人格・品番区切りの表記差を除くと同一で、材質・数量も一致する最新見積。"
+    },
+    {
+      "id": "V2",
+      "category": "variant",
+      "query": {"customer_name":"旧：信越計測株式会社","product_code":"SUS_SH_45","product_name":"SUSシャフト45mm","material":"SUS304","quantity":100,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:信越計測",
+      "expected_product_candidate":"product:SUSSH45",
+      "acceptable_quote_ids":["Q-250711-0236"],
+      "review_basis":"旧表記・法人格・品番区切りの差を除くと同一で、材質・数量も一致する最新見積。"
+    },
+    {
+      "id": "V3",
+      "category": "variant",
+      "query": {"customer_name":"東都半導体装置株式会社","product_code":"PEEK_GR_10","product_name":"PEEKガイドレール","material":"PEEK","quantity":1,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:東都半導体装置",
+      "expected_product_candidate":"product:PEEKGR10",
+      "acceptable_quote_ids":["Q-250819-0450"],
+      "review_basis":"法人格・品番区切りの差を除くと同一で、材質・数量も一致する最新見積。"
+    },
+    {
+      "id": "N1",
+      "category": "no_match",
+      "query": {"customer_name":"新規取引テスト工業","product_code":"POM-120-8","product_name":"樹脂ローラー120","material":"POM","quantity":10,"quantity_unit":"個"},
+      "expected_customer_candidate":null,
+      "expected_product_candidate":"product:POM1208",
+      "acceptable_quote_ids":[],
+      "expect_product_only_quotes":true,
+      "review_basis":"顧客は未登録だが商品は既知。別顧客の見積は参考候補に限り、顧客一致0点・顧客差異警告が必要。"
+    },
+    {
+      "id": "N2",
+      "category": "no_match",
+      "query": {"customer_name":"青葉精機","product_code":"UNKNOWN-901","product_name":"未登録特殊部品901","material":"チタン","quantity":3,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:青葉精機",
+      "expected_product_candidate":null,
+      "acceptable_quote_ids":[],
+      "expect_product_only_quotes":false,
+      "review_basis":"顧客は既知だが商品が未登録。似た品番を推測で確定せず、過去価格候補を出さない。"
+    },
+    {
+      "id": "N3",
+      "category": "no_match",
+      "query": {"customer_name":"未登録顧客ゼータ","product_code":"ZZZ-999-X","product_name":"未登録商品ゼータ","material":null,"quantity":1,"quantity_unit":"個"},
+      "expected_customer_candidate":null,
+      "expected_product_candidate":null,
+      "acceptable_quote_ids":[],
+      "expect_product_only_quotes":false,
+      "review_basis":"顧客・商品とも未登録。既存候補へ誤名寄せせず、過去価格候補を出さない。"
+    },
+    {
+      "id": "M1",
+      "category": "multiple",
+      "query": {"customer_name":"青葉精機","product_code":"MC-PLT-300","product_name":"MCナイロンプレート300","material":"MCナイロン","quantity":100,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:青葉精機",
+      "expected_product_candidate":"product:MCPLT300",
+      "acceptable_quote_ids":["Q-250914-1811","Q-250909-0248","Q-250820-0313"],
+      "review_basis":"同一顧客・論理品番・材質・数量の候補が複数あるため、最新3件を比較対象とする。加工種別等が違うので単一正解にしない。"
+    },
+    {
+      "id": "M2",
+      "category": "multiple",
+      "query": {"customer_name":"ミナト医療機器","product_code":"AL-BKT-22","product_name":"アルミブラケット22","material":"A5052","quantity":200,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:ミナト医療機器",
+      "expected_product_candidate":"product:ALBKT22",
+      "acceptable_quote_ids":["Q-250910-1271","Q-250908-0543","Q-240131-1963"],
+      "review_basis":"同一顧客・論理品番・材質・数量の最新3件。加工種別差があるため人間が比較して選ぶ。"
+    },
+    {
+      "id": "M3",
+      "category": "multiple",
+      "query": {"customer_name":"京浜ロボティクス","product_code":"S45C-PIN-18","product_name":"S45Cピン18","material":"S45C","quantity":20,"quantity_unit":"個"},
+      "expected_customer_candidate":"customer:京浜ロボティクス",
+      "expected_product_candidate":"product:S45CPIN18",
+      "acceptable_quote_ids":["Q-250601-1881","Q-250307-1961","Q-241008-1086"],
+      "review_basis":"同一顧客・論理品番・材質・数量の最新3件。板金・試作等の差を確認して人間が選ぶ。"
+    }
+  ]
+}

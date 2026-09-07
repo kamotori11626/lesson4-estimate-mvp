@@ -1,0 +1,55 @@
+{
+  "notice": "全回答・仕様・参照番号・回答日時は業務検証のための架空設定。実顧客回答、実在資料、承認済み仕様ではない。元のマスタや過去記録を変更しない。",
+  "test_date": "2026-09-01",
+  "cases": [
+    {
+      "id": "SIM-REPLY-A",
+      "sample_id": "clear",
+      "respondent_role": "商品マスタ管理担当者・技術担当者（架空）",
+      "simulated_answer_at": "2025-06-09T10:00:00+09:00",
+      "answer": "【架空回答】この試験では、依頼のALBKT22は正式品番ALBKT22を指し、旧表記AL-BKT-22は同一現行品の別名です。別仕様の旧製品ではありません。適用仕様は架空仕様SIM-ALB-001第2版。品名は検証用ブラケット、材質A5052、寸法22×20×3 mm、公差±0.1 mmです。この依頼に対応する現行規格品はこの仕様で一意です。",
+      "evidence": "SIM-ALB-001第2版は本回答内だけで定義する架空仕様。実ファイルは存在せず、実マスタのALBKT22との照合は行っていない。",
+      "draft_values": {
+        "product_name": "検証用ブラケット",
+        "material": "A5052",
+        "dimensions": "22×20×3 mm",
+        "tolerance": "±0.1 mm"
+      },
+      "can_resolve_in_simulation": ["旧表記が別製品かどうか", "正式品番・今回適用する商品仕様の特定"],
+      "remaining": ["実在資料の照合・担当者による正式確認", "価格・加工可否・納品可否は本回答で確定しない"],
+      "expected_missing_after": [],
+      "expected_status": "needs_review"
+    },
+    {
+      "id": "SIM-REPLY-B",
+      "sample_id": "missing",
+      "respondent_role": "技術担当者（架空）",
+      "simulated_answer_at": "2026-01-07T10:00:00+09:00",
+      "answer": "【架空回答】社内標準品の架空仕様SIM-PPS-001第1版では一般公差±0.2 mmです。ただしPPSカバー80という品名だけでは今回の仕様を特定できず、顧客指定図面と標準品のどちらが適用されるか未確認です。±0.2 mmを今回の公差として採用しないでください。顧客に今回適用する図面・版と、公差指定の有無を確認してください。",
+      "evidence": "SIM-PPS-001第1版と±0.2 mmは架空の参考情報。今回への適用が未確認と明示されている。",
+      "draft_values": {},
+      "can_resolve_in_simulation": ["社内標準公差の参考情報があるかという調査"],
+      "remaining": ["今回の商品・適用図面・版の特定", "今回の公差の確定", "顧客指定公差の有無の確認"],
+      "expected_missing_after": ["product_code", "material", "dimensions", "tolerance"],
+      "expected_status": "needs_review"
+    },
+    {
+      "id": "SIM-REPLY-C",
+      "sample_id": "ambiguous",
+      "respondent_role": "顧客（架空）",
+      "simulated_answer_at": "2025-11-04T10:00:00+09:00",
+      "answer": "【架空回答】前回とは架空見積SIM-Q-003です。今回も架空図面SIM-D-003第2版と同じ仕様で、変更はありません。材質MCナイロン、寸法300×200×10 mm、公差±0.3 mm、数量1枚です。希望する受入日は2025年12月12日から12月18日までのいずれかです。期間内ならどの日でも構いません。御社の納品可能日を回答してください。",
+      "evidence": "SIM-Q-003とSIM-D-003第2版は本回答内だけで定義する架空参照。実在する過去見積・図面を検索・確認した事実ではない。",
+      "draft_values": {
+        "material": "MCナイロン",
+        "dimensions": "300×200×10 mm",
+        "tolerance": "±0.3 mm"
+      },
+      "requested_delivery_window": { "start": "2025-12-12", "end": "2025-12-18" },
+      "can_resolve_in_simulation": ["顧客が指す前回案件番号", "回答に明記された材質・寸法・公差と変更有無", "来月半ばの意味（希望する許容期間）"],
+      "remaining": ["実在する過去見積・図面と回答の照合", "希望期間を保持するアプリ仕様（現状は単一日だけ）", "納品可能日の確認・回答"],
+      "expected_missing_after": ["product_code", "requested_delivery_date"],
+      "expected_status": "needs_review"
+    }
+  ]
+}

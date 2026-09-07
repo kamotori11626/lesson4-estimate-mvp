@@ -1,0 +1,648 @@
+{
+  "verification": "OFFLINE_SYNTHETIC_UNCERTAIN_RESPONSE",
+  "external_attempts": 0,
+  "prompt_version": "extraction-prompt-1.3",
+  "rule_version": "extraction-rules-1.3",
+  "checked_at": "2026-08-31T01:58:21.772Z",
+  "cases": [
+    {
+      "id": "clear",
+      "pass": true,
+      "scope_decision": {
+        "model_scope": "uncertain",
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "single_labelled",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Aです",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 0,
+                "end": 8
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "お見積りをお願いします",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 9,
+                "end": 20
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品番: ALBKT22",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 22,
+                "end": 33
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 100個",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 34,
+                "end": 42
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 2025-06-20",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 43,
+                "end": 59
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "よろしくお願いいたします",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 60,
+                "end": 72
+              }
+            }
+          ]
+        },
+        "outcome": "local_labelled_fallback"
+      },
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "02f231ac-c4de-4a3a-b1de-dc65bfff676c",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客A",
+            "source_quote": "検証用顧客A",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": "ALBKT22",
+            "source_quote": "ALBKT22",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 26,
+              "end": 33
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 100,
+            "source_quote": "100個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 38,
+              "end": 42
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "個",
+            "source_quote": "100個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 38,
+              "end": 42
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": "2025-06-20",
+            "source_quote": "2025-06-20",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 59
+            },
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_name",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "severity": "warning",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品番: ALBKT22」 [22, 33)",
+            "source": "request_text",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": null
+      }
+    },
+    {
+      "id": "missing",
+      "pass": true,
+      "scope_decision": {
+        "model_scope": "uncertain",
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "single_labelled",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Bです",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 0,
+                "end": 8
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "次の商品の見積をお願いします",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 9,
+                "end": 23
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: PPSカバー80",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 25,
+                "end": 37
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1個",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 38,
+                "end": 44
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "公差: 不明",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 45,
+                "end": 51
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 2026-02-08",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 52,
+                "end": 68
+              }
+            }
+          ]
+        },
+        "outcome": "local_labelled_fallback"
+      },
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "82db4433-9afc-4784-9353-c8f21335ba86",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客B",
+            "source_quote": "検証用顧客B",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": "PPSカバー80",
+            "source_quote": "PPSカバー80",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 29,
+              "end": 37
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 1,
+            "source_quote": "1個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 42,
+              "end": 44
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "個",
+            "source_quote": "1個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 42,
+              "end": 44
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": "公差: 不明",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 45,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": "2026-02-08",
+            "source_quote": "2026-02-08",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 58,
+              "end": 68
+            },
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "severity": "warning",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: PPSカバー80」 [25, 37)",
+            "source": "request_text",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「公差: 不明」 [45, 51)",
+            "source": "tolerance",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": null
+      }
+    },
+    {
+      "id": "ambiguous",
+      "pass": true,
+      "scope_decision": {
+        "model_scope": "uncertain",
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "single_labelled",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Cです",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 0,
+                "end": 8
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "前回同様のお見積りをお願いします",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 9,
+                "end": 25
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: MCナイロンプレート300",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 27,
+                "end": 44
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1枚",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 45,
+                "end": 51
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 来月半ば",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 52,
+                "end": 62
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "寸法と公差は前回同様です",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 63,
+                "end": 75
+              }
+            }
+          ]
+        },
+        "outcome": "local_labelled_fallback"
+      },
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "99ca7c8d-a51a-42b3-a55f-b1f340506629",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客C",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 31,
+              "end": 44
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 1,
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 52,
+              "end": 62
+            },
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "severity": "warning",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: MCナイロンプレート300」 [27, 44)",
+            "source": "request_text",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "dimensions",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "tolerance",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "source": "requested_delivery_date",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": null
+      }
+    }
+  ]
+}

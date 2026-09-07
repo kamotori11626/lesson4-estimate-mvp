@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "saved_message": "修正下書きを保存しました。正式な確認済み・後工程への引渡しではありません。",
+  "quantity_before": 1,
+  "quantity_saved": 2,
+  "temporary_unsaved_quantity": "999",
+  "quantity_displayed_after_reload": "2",
+  "revision": 2,
+  "request_id": "a34f2bee-5afa-462d-a89e-00255b13d914",
+  "audit_log_id": "603c9df8-cf55-40fc-be07-9687f497fb63",
+  "mode": "local",
+  "external_attempts": 0,
+  "status": "needs_review",
+  "all_fields_pending": true,
+  "result": "PASS"
+}

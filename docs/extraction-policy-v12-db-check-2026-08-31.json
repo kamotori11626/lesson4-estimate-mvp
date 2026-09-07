@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-08-31T01:13:50.881Z",
+  "summary": [
+    {
+      "case": "ambiguous-local",
+      "run_id": "97837d9b-f24a-4df0-8a4b-1e67c7334bc7",
+      "matched": true,
+      "external_attempts": 0,
+      "revision": 1,
+      "events": [
+        "finished",
+        "started"
+      ],
+      "review_drafts": 0
+    },
+    {
+      "case": "multiple-local",
+      "run_id": "0a1694e2-f2ea-426b-82df-30912633ff07",
+      "matched": true,
+      "external_attempts": 0,
+      "revision": 1,
+      "events": [
+        "finished",
+        "started"
+      ],
+      "review_drafts": 0
+    },
+    {
+      "case": "correction-local",
+      "run_id": "b127ce81-acf8-4185-92f3-d4c900042d3f",
+      "matched": true,
+      "external_attempts": 0,
+      "revision": 1,
+      "events": [
+        "finished",
+        "started"
+      ],
+      "review_drafts": 0
+    },
+    {
+      "case": "multiple-final-local",
+      "run_id": "04025d8c-0a8a-4fbe-aff4-872aabeab361",
+      "matched": true,
+      "external_attempts": 0,
+      "revision": 1,
+      "events": [
+        "finished",
+        "started"
+      ],
+      "review_drafts": 0
+    },
+    {
+      "case": "correction-final-local",
+      "run_id": "57a99c87-c4a9-43cd-aaae-d6a0ff8ce21e",
+      "matched": true,
+      "external_attempts": 0,
+      "revision": 1,
+      "events": [
+        "finished",
+        "started"
+      ],
+      "review_drafts": 0
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "description": "2026-08-31 Step 3。実AIの結果取得前に、入力文と既存仕様から定義した期待値。顧客名はAI抽出ではなく内部フォームの値。",
+  "cases": [
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "expected_values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "expected_missing": ["product_name", "material", "dimensions", "tolerance"],
+      "expected_ambiguity": []
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "expected_values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "expected_missing": ["product_code", "material", "dimensions", "tolerance"],
+      "expected_ambiguity": ["tolerance"]
+    },
+    {
+      "id": "ambiguous",
+      "source_rfq": "RFQ-00004",
+      "expected_values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "expected_missing": ["product_code", "material", "dimensions", "tolerance", "requested_delivery_date"],
+      "expected_ambiguity": ["dimensions", "tolerance", "requested_delivery_date"]
+    }
+  ]
+}

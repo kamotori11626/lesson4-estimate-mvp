@@ -1,0 +1,138 @@
+{
+  "checked_at": "2026-09-07T10:35:24.070Z",
+  "external_gemini_calls": 0,
+  "email_sends": 0,
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": 1,
+      "label": "未ログイン画面の拒否",
+      "status": "pass",
+      "evidence": "業務画面は303でログインへ遷移"
+    },
+    {
+      "id": 2,
+      "label": "未ログイン業務APIの拒否",
+      "status": "pass",
+      "evidence": "5 API領域を401で拒否"
+    },
+    {
+      "id": 3,
+      "label": "正しい認証情報でログイン",
+      "status": "pass",
+      "evidence": "サーバー側セッションを発行"
+    },
+    {
+      "id": 4,
+      "label": "誤認証情報の拒否",
+      "status": "pass",
+      "evidence": "ユーザー名の存在を推測できない共通エラー"
+    },
+    {
+      "id": 5,
+      "label": "ログアウト後のセッション無効化",
+      "status": "pass",
+      "evidence": "旧Cookieで業務APIを401拒否"
+    },
+    {
+      "id": 6,
+      "label": "許可外OriginのPOST拒否",
+      "status": "pass",
+      "evidence": "403で拒否"
+    },
+    {
+      "id": 7,
+      "label": "従来のローカルURL",
+      "status": "pass",
+      "evidence": "http://127.0.0.1:60620で認証後の業務画面を表示"
+    },
+    {
+      "id": 8,
+      "label": "本番待受設定",
+      "status": "pass",
+      "evidence": "設定単体テストで0.0.0.0とPORTを確認"
+    },
+    {
+      "id": 9,
+      "label": "DATABASE_URL切替",
+      "status": "pass",
+      "evidence": "設定単体テストでURLあり・なしを確認"
+    },
+    {
+      "id": 10,
+      "label": "DBマイグレーションの冪等性",
+      "status": "pass",
+      "evidence": "同じ5マイグレーションを2回適用して成功"
+    },
+    {
+      "id": 11,
+      "label": "模擬データ投入の冪等性",
+      "status": "pass",
+      "evidence": {
+        "customers": 200,
+        "products": 200,
+        "quotes": 2000,
+        "requests": 1000,
+        "suppliers": 86
+      }
+    },
+    {
+      "id": 12,
+      "label": "認証済みデモリセット",
+      "status": "pass",
+      "evidence": "主要件数を初期値へ復元"
+    },
+    {
+      "id": 13,
+      "label": "未認証リセットの拒否",
+      "status": "pass",
+      "evidence": "401で拒否"
+    },
+    {
+      "id": 14,
+      "label": "リセット監査",
+      "status": "pass",
+      "evidence": "実行者・日時・対象範囲を保存"
+    },
+    {
+      "id": 15,
+      "label": "操作記録の利用者帰属",
+      "status": "pass",
+      "evidence": "認証済みユーザー名を監査表へ保存"
+    },
+    {
+      "id": 16,
+      "label": "秘密情報の非露出",
+      "status": "pass",
+      "evidence": "画面・health API・アプリログに検証用秘密値なし"
+    },
+    {
+      "id": 17,
+      "label": "禁止表現・自動送信なし",
+      "status": "pass",
+      "evidence": "既存テストと3ケースで価格断定・納期確約なし、auto_send=false"
+    },
+    {
+      "id": 18,
+      "label": "案件切替時の混入なし",
+      "status": "pass",
+      "evidence": "既存の案件切替回帰テストが合格"
+    },
+    {
+      "id": 19,
+      "label": "既存・追加Nodeテスト",
+      "status": "pass",
+      "evidence": "187/187件合格"
+    },
+    {
+      "id": 20,
+      "label": "ログイン後のデモ3ケース",
+      "status": "pass",
+      "evidence": "正常・不足・承認要否の3件が7/7工程を完走し、保存した抽出結果を再読出し。工程順違反は409で返し、サーバー継続も確認"
+    }
+  ]
+}

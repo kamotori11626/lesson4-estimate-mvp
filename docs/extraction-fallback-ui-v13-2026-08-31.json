@@ -1,0 +1,1215 @@
+{
+  "checked_at": "2026-08-31",
+  "test_type": "simulated_uncertain_chrome_ui_postgresql",
+  "actual_external_ai_requests": 0,
+  "browser": {
+    "before": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "93ed790a-2a24-40b5-beb3-d856362cbf04",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客C",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 31,
+              "end": 44
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 1,
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 52,
+              "end": 62
+            },
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "severity": "warning",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: MCナイロンプレート300」 [27, 44)",
+            "source": "request_text",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "dimensions",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "tolerance",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "source": "requested_delivery_date",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "c5cd1568-59b1-4b7b-a44c-aa2cb8eed3b3"
+      },
+      "execution": {
+        "mode": "test_simulation",
+        "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+        "execution_user_id": "isolated-fallback-ui-test",
+        "identity_mode": "unauthenticated_test_only",
+        "prompt_version": "extraction-prompt-1.3",
+        "rule_version": "extraction-rules-1.3",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "verified_external_response": false,
+        "extraction_method": "local_labelled_fallback",
+        "scope_decision": {
+          "model_scope": "uncertain",
+          "local_assessment": {
+            "rule": "single-item-envelope-1",
+            "classification": "single_labelled",
+            "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+            "evidence": [
+              {
+                "kind": "envelope",
+                "source_quote": "検証用顧客Cです",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 0,
+                  "end": 8
+                }
+              },
+              {
+                "kind": "envelope",
+                "source_quote": "前回同様のお見積りをお願いします",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 9,
+                  "end": 25
+                }
+              },
+              {
+                "kind": "item_identity",
+                "source_quote": "品名: MCナイロンプレート300",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 27,
+                  "end": 44
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "数量: 1枚",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 45,
+                  "end": 51
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "希望納期: 来月半ば",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 52,
+                  "end": 62
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "寸法と公差は前回同様です",
+                "source_location": {
+                  "source_id": "request_text",
+                  "start": 63,
+                  "end": 75
+                }
+              }
+            ]
+          },
+          "outcome": "local_labelled_fallback"
+        },
+        "started_at": "2026-08-31T04:36:33.885Z",
+        "completed_at": "2026-08-31T04:36:33.936Z",
+        "test_context": {
+          "simulated_response": true,
+          "simulated_provider_attempts": 1,
+          "actual_external_requests": 0,
+          "schema": "fallback_ui_v13_20260831",
+          "fixture": "scope_uncertain_all_fields_null"
+        }
+      },
+      "revision": 1
+    },
+    "saved": {
+      "output": {
+        "status": "needs_review",
+        "request_id": "93ed790a-2a24-40b5-beb3-d856362cbf04",
+        "audit_log_id": "c5cd1568-59b1-4b7b-a44c-aa2cb8eed3b3",
+        "missing_fields": [
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "schema_version": "extraction-1.0",
+        "extracted_fields": {
+          "material": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "quantity": {
+            "value": 1,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "tolerance": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "dimensions": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "product_code": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "end": 44,
+              "start": 31,
+              "source_id": "request_text"
+            }
+          },
+          "customer_name": {
+            "value": "検証用顧客C",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "end": 6,
+              "start": 0,
+              "source_id": "customer_name"
+            }
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "end": 62,
+              "start": 52,
+              "source_id": "request_text"
+            }
+          }
+        },
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "source": "request_text",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: MCナイロンプレート300」 [27, 44)",
+            "severity": "warning",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "dimensions",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "tolerance",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "requested_delivery_date",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "source": "system",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "source": "system",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ]
+      },
+      "execution": {
+        "mode": "test_simulation",
+        "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+        "started_at": "2026-08-31T04:36:33.885Z",
+        "completed_at": "2026-08-31T04:36:33.936Z",
+        "rule_version": "extraction-rules-1.3",
+        "test_context": {
+          "schema": "fallback_ui_v13_20260831",
+          "fixture": "scope_uncertain_all_fields_null",
+          "simulated_response": true,
+          "actual_external_requests": 0,
+          "simulated_provider_attempts": 1
+        },
+        "identity_mode": "unauthenticated_test_only",
+        "prompt_version": "extraction-prompt-1.3",
+        "scope_decision": {
+          "outcome": "local_labelled_fallback",
+          "model_scope": "uncertain",
+          "local_assessment": {
+            "rule": "single-item-envelope-1",
+            "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+            "evidence": [
+              {
+                "kind": "envelope",
+                "source_quote": "検証用顧客Cです",
+                "source_location": {
+                  "end": 8,
+                  "start": 0,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "envelope",
+                "source_quote": "前回同様のお見積りをお願いします",
+                "source_location": {
+                  "end": 25,
+                  "start": 9,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_identity",
+                "source_quote": "品名: MCナイロンプレート300",
+                "source_location": {
+                  "end": 44,
+                  "start": 27,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "数量: 1枚",
+                "source_location": {
+                  "end": 51,
+                  "start": 45,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "希望納期: 来月半ば",
+                "source_location": {
+                  "end": 62,
+                  "start": 52,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "寸法と公差は前回同様です",
+                "source_location": {
+                  "end": 75,
+                  "start": 63,
+                  "source_id": "request_text"
+                }
+              }
+            ],
+            "classification": "single_labelled"
+          }
+        },
+        "execution_user_id": "isolated-fallback-ui-test",
+        "external_attempts": 0,
+        "extraction_method": "local_labelled_fallback",
+        "verified_external_response": false,
+        "verified_external_extraction": false
+      },
+      "revision": 2,
+      "message": "修正下書きを保存しました。正式な確認済み・後工程への引渡しではありません。"
+    },
+    "reloaded": {
+      "output": {
+        "status": "needs_review",
+        "request_id": "93ed790a-2a24-40b5-beb3-d856362cbf04",
+        "audit_log_id": "c5cd1568-59b1-4b7b-a44c-aa2cb8eed3b3",
+        "missing_fields": [
+          {
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning",
+            "field_name": "material"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "tolerance"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "dimensions"
+          },
+          {
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning",
+            "field_name": "product_code"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "requested_delivery_date"
+          }
+        ],
+        "schema_version": "extraction-1.0",
+        "extracted_fields": {
+          "material": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "quantity": {
+            "value": 1,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "tolerance": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "dimensions": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "product_code": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "end": 44,
+              "start": 31,
+              "source_id": "request_text"
+            }
+          },
+          "customer_name": {
+            "value": "検証用顧客C",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "end": 6,
+              "start": 0,
+              "source_id": "customer_name"
+            }
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "end": 62,
+              "start": 52,
+              "source_id": "request_text"
+            }
+          }
+        },
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "source": "request_text",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: MCナイロンプレート300」 [27, 44)",
+            "severity": "warning",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "dimensions",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "tolerance",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "requested_delivery_date",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "source": "system",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "source": "system",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ]
+      },
+      "execution": {
+        "mode": "test_simulation",
+        "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+        "started_at": "2026-08-31T04:36:33.885Z",
+        "completed_at": "2026-08-31T04:36:33.936Z",
+        "rule_version": "extraction-rules-1.3",
+        "test_context": {
+          "schema": "fallback_ui_v13_20260831",
+          "fixture": "scope_uncertain_all_fields_null",
+          "simulated_response": true,
+          "actual_external_requests": 0,
+          "simulated_provider_attempts": 1
+        },
+        "identity_mode": "unauthenticated_test_only",
+        "prompt_version": "extraction-prompt-1.3",
+        "scope_decision": {
+          "outcome": "local_labelled_fallback",
+          "model_scope": "uncertain",
+          "local_assessment": {
+            "rule": "single-item-envelope-1",
+            "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+            "evidence": [
+              {
+                "kind": "envelope",
+                "source_quote": "検証用顧客Cです",
+                "source_location": {
+                  "end": 8,
+                  "start": 0,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "envelope",
+                "source_quote": "前回同様のお見積りをお願いします",
+                "source_location": {
+                  "end": 25,
+                  "start": 9,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_identity",
+                "source_quote": "品名: MCナイロンプレート300",
+                "source_location": {
+                  "end": 44,
+                  "start": 27,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "数量: 1枚",
+                "source_location": {
+                  "end": 51,
+                  "start": 45,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "希望納期: 来月半ば",
+                "source_location": {
+                  "end": 62,
+                  "start": 52,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "寸法と公差は前回同様です",
+                "source_location": {
+                  "end": 75,
+                  "start": 63,
+                  "source_id": "request_text"
+                }
+              }
+            ],
+            "classification": "single_labelled"
+          }
+        },
+        "execution_user_id": "isolated-fallback-ui-test",
+        "external_attempts": 0,
+        "extraction_method": "local_labelled_fallback",
+        "verified_external_response": false,
+        "verified_external_extraction": false
+      },
+      "revision": 2
+    },
+    "temporary_unsaved_quantity": [
+      "            - spinbutton \"数量の修正下書き\" [active]: \"999\""
+    ],
+    "reloaded_quantity": [
+      "            - spinbutton \"数量の修正下書き\": \"1\""
+    ],
+    "reload_status": "AIは範囲を判別できませんでした。原文書式を検査してローカル抽出した下書きです。AI抽出成功ではありません。"
+  },
+  "database_verification": {
+    "fallback_ui_and_saved_output": "PASS",
+    "audit_change_array_format": "FAIL",
+    "expected_no_change_history": [],
+    "database_record": {
+      "run_id": "c5cd1568-59b1-4b7b-a44c-aa2cb8eed3b3",
+      "request_id": "93ed790a-2a24-40b5-beb3-d856362cbf04",
+      "created_at": "2026-08-31T04:36:33.899Z",
+      "updated_at": "2026-08-31T04:39:34.111Z",
+      "input_payload": {
+        "mode": "gemini",
+        "consent": true,
+        "case_type": "類似品",
+        "item_scope": "single",
+        "received_at": "2025-11-03T09:00:00+09:00",
+        "request_text": "検証用顧客Cです。前回同様のお見積りをお願いします。\n品名: MCナイロンプレート300\n数量: 1枚\n希望納期: 来月半ば\n寸法と公差は前回同様です。",
+        "customer_name": "検証用顧客C",
+        "schema_version": "extraction-1.0",
+        "request_channel": "email"
+      },
+      "output_payload": {
+        "status": "needs_review",
+        "request_id": "93ed790a-2a24-40b5-beb3-d856362cbf04",
+        "audit_log_id": "c5cd1568-59b1-4b7b-a44c-aa2cb8eed3b3",
+        "missing_fields": [
+          {
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning",
+            "field_name": "material"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "tolerance"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "dimensions"
+          },
+          {
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning",
+            "field_name": "product_code"
+          },
+          {
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning",
+            "field_name": "requested_delivery_date"
+          }
+        ],
+        "schema_version": "extraction-1.0",
+        "extracted_fields": {
+          "material": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "quantity": {
+            "value": 1,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "tolerance": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "dimensions": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "end": 75,
+              "start": 63,
+              "source_id": "request_text"
+            }
+          },
+          "product_code": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": null,
+            "source_location": null
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "end": 44,
+              "start": 31,
+              "source_id": "request_text"
+            }
+          },
+          "customer_name": {
+            "value": "検証用顧客C",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "end": 6,
+              "start": 0,
+              "source_id": "customer_name"
+            }
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "1枚",
+            "source_location": {
+              "end": 51,
+              "start": 49,
+              "source_id": "request_text"
+            }
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "confidence": null,
+            "human_status": "pending",
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "end": 62,
+              "start": 52,
+              "source_id": "request_text"
+            }
+          }
+        },
+        "warnings_and_holds": [
+          {
+            "code": "LOCAL_SCOPE_FALLBACK",
+            "source": "request_text",
+            "message": "AIは商品数・業務範囲を不明としました。本文全体が対応済みの単一商品書式と確認できたため、原文からローカル抽出した未確認下書きを表示します。AI判定の成功ではありません。 単一商品根拠: 「品名: MCナイロンプレート300」 [27, 44)",
+            "severity": "warning",
+            "required_action": "AIの商品数不明判定は記録に残しています。本文全体の単一商品根拠と、ローカル抽出した各項目を照合してください。AI抽出成功・確認済みとして扱わず、追記や別商品があれば依頼全体を保留してください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "dimensions",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "tolerance",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "source": "requested_delivery_date",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "severity": "hold",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "source": "system",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "source": "system",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "severity": "warning",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ]
+      },
+      "execution": {
+        "mode": "test_simulation",
+        "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+        "started_at": "2026-08-31T04:36:33.885Z",
+        "completed_at": "2026-08-31T04:36:33.936Z",
+        "rule_version": "extraction-rules-1.3",
+        "test_context": {
+          "schema": "fallback_ui_v13_20260831",
+          "fixture": "scope_uncertain_all_fields_null",
+          "simulated_response": true,
+          "actual_external_requests": 0,
+          "simulated_provider_attempts": 1
+        },
+        "identity_mode": "unauthenticated_test_only",
+        "prompt_version": "extraction-prompt-1.3",
+        "scope_decision": {
+          "outcome": "local_labelled_fallback",
+          "model_scope": "uncertain",
+          "local_assessment": {
+            "rule": "single-item-envelope-1",
+            "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+            "evidence": [
+              {
+                "kind": "envelope",
+                "source_quote": "検証用顧客Cです",
+                "source_location": {
+                  "end": 8,
+                  "start": 0,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "envelope",
+                "source_quote": "前回同様のお見積りをお願いします",
+                "source_location": {
+                  "end": 25,
+                  "start": 9,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_identity",
+                "source_quote": "品名: MCナイロンプレート300",
+                "source_location": {
+                  "end": 44,
+                  "start": 27,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "数量: 1枚",
+                "source_location": {
+                  "end": 51,
+                  "start": 45,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "希望納期: 来月半ば",
+                "source_location": {
+                  "end": 62,
+                  "start": 52,
+                  "source_id": "request_text"
+                }
+              },
+              {
+                "kind": "item_field",
+                "source_quote": "寸法と公差は前回同様です",
+                "source_location": {
+                  "end": 75,
+                  "start": 63,
+                  "source_id": "request_text"
+                }
+              }
+            ],
+            "classification": "single_labelled"
+          }
+        },
+        "execution_user_id": "isolated-fallback-ui-test",
+        "external_attempts": 0,
+        "extraction_method": "local_labelled_fallback",
+        "verified_external_response": false,
+        "verified_external_extraction": false
+      },
+      "revision": 2
+    },
+    "events": [
+      {
+        "event_type": "started",
+        "event_summary": {
+          "input_hash": "3d63fa4f5310e656ed9b1d840d3cb2c6dbda965a02df4c9ba97a4e068a203c2b",
+          "input_length": 76,
+          "identity_mode": "unauthenticated_test_only",
+          "schema_version": "extraction-1.0",
+          "execution_user_id": "isolated-fallback-ui-test"
+        }
+      },
+      {
+        "event_type": "finished",
+        "event_summary": {
+          "mode": "test_simulation",
+          "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+          "status": "needs_review",
+          "rule_version": "extraction-rules-1.3",
+          "warning_codes": [
+            "LOCAL_SCOPE_FALLBACK",
+            "AMBIGUOUS",
+            "AMBIGUOUS",
+            "AMBIGUOUS",
+            "HUMAN_REVIEW_REQUIRED",
+            "DEVELOPMENT_ONLY"
+          ],
+          "prompt_version": "extraction-prompt-1.3",
+          "schema_version": "extraction-1.0",
+          "scope_decision": {
+            "outcome": "local_labelled_fallback",
+            "model_scope": "uncertain",
+            "local_assessment": {
+              "rule": "single-item-envelope-1",
+              "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+              "evidence": [
+                {
+                  "kind": "envelope",
+                  "source_quote": "検証用顧客Cです",
+                  "source_location": {
+                    "end": 8,
+                    "start": 0,
+                    "source_id": "request_text"
+                  }
+                },
+                {
+                  "kind": "envelope",
+                  "source_quote": "前回同様のお見積りをお願いします",
+                  "source_location": {
+                    "end": 25,
+                    "start": 9,
+                    "source_id": "request_text"
+                  }
+                },
+                {
+                  "kind": "item_identity",
+                  "source_quote": "品名: MCナイロンプレート300",
+                  "source_location": {
+                    "end": 44,
+                    "start": 27,
+                    "source_id": "request_text"
+                  }
+                },
+                {
+                  "kind": "item_field",
+                  "source_quote": "数量: 1枚",
+                  "source_location": {
+                    "end": 51,
+                    "start": 45,
+                    "source_id": "request_text"
+                  }
+                },
+                {
+                  "kind": "item_field",
+                  "source_quote": "希望納期: 来月半ば",
+                  "source_location": {
+                    "end": 62,
+                    "start": 52,
+                    "source_id": "request_text"
+                  }
+                },
+                {
+                  "kind": "item_field",
+                  "source_quote": "寸法と公差は前回同様です",
+                  "source_location": {
+                    "end": 75,
+                    "start": 63,
+                    "source_id": "request_text"
+                  }
+                }
+              ],
+              "classification": "single_labelled"
+            }
+          },
+          "external_attempts": 0,
+          "extraction_method": "local_labelled_fallback"
+        }
+      },
+      {
+        "event_type": "review_draft_saved",
+        "event_summary": {
+          "identity_mode": "unauthenticated_local",
+          "changed_fields": []
+        }
+      }
+    ],
+    "review_drafts": [
+      {
+        "reviewer_id": "local-development",
+        "changes": {},
+        "changes_type": "object"
+      }
+    ],
+    "normal_schema_matching_records": 0,
+    "test_status": {
+      "test_only": true,
+      "schema": "fallback_ui_v13_20260831",
+      "port": 4174,
+      "model": "TEST_ONLY_SIMULATED_UNCERTAIN",
+      "simulated_calls": 1,
+      "actual_external_requests": 0,
+      "blocked_network_calls": 0,
+      "production_server_modified": false,
+      "renderer_sha256": "bc5c35a0bd7e84582aeb9e5c8ca9fb4e703be640f6b35a89ee9255f5f0d3e9ed"
+    },
+    "production_health": {
+      "ui": {
+        "ok": true
+      },
+      "backend": {
+        "ok": true
+      },
+      "database_ok": true
+    },
+    "renderer_matches_production_file": true
+  },
+  "final_diagnostic": {
+    "read_only_nonempty_change_array_reproduction": {
+      "ok": false,
+      "code": "22P02",
+      "message": "invalid input syntax for type json"
+    },
+    "test_port_4174_stopped": true,
+    "normal_port_4173_backend_ok": true,
+    "normal_database_ok": true
+  }
+}

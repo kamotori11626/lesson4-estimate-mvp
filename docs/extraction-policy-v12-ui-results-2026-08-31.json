@@ -1,0 +1,756 @@
+[
+  {
+    "id": "ambiguous-local",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "416eaa50-faf6-424a-aa32-a2e1cae03f60",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客C",
+            "source_quote": "検証用顧客C",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": "MCナイロンプレート300",
+            "source_quote": "MCナイロンプレート300",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 31,
+              "end": 44
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 1,
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "枚",
+            "source_quote": "1枚",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": "寸法と公差は前回同様です",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 63,
+              "end": 75
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": "希望納期: 来月半ば",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 52,
+              "end": 62
+            },
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "dimensions",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)",
+            "source": "tolerance",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)",
+            "source": "requested_delivery_date",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "LOCAL_RULE_BASELINE",
+            "severity": "info",
+            "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "97837d9b-f24a-4df0-8a4b-1e67c7334bc7"
+      },
+      "execution": {
+        "mode": "local",
+        "model": null,
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "started_at": "2026-08-30T23:02:45.436Z",
+        "completed_at": "2026-08-30T23:02:45.494Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "multiple-local",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "76605077-1da7-44cb-b0ff-aab5d26e0d15",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [],
+        "warnings_and_holds": [
+          {
+            "code": "MULTIPLE_ITEMS",
+            "severity": "hold",
+            "message": "複数商品の依頼です。先頭商品だけを採用せず、依頼全体を保留しました。",
+            "source": "request_text",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "CONFLICTING_VALUES",
+            "severity": "hold",
+            "message": "複数数量・訂正の可能性があります。どちらも採用していません。「10個」 [41, 44) / 「20個」 [60, 63)",
+            "source": "quantity",
+            "required_action": "入力者が両方の記載と訂正の経緯を確認してください。最新・最大・高信頼度という理由だけで選ばず、依頼元または正式な確認担当へ確認してください。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "0a1694e2-f2ea-426b-82df-30912633ff07"
+      },
+      "execution": {
+        "mode": "local",
+        "model": null,
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "started_at": "2026-08-30T23:03:30.363Z",
+        "completed_at": "2026-08-30T23:03:30.399Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "correction-local",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "93eca4ac-a117-41e1-843e-8077898f7baf",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客A",
+            "source_quote": "検証用顧客A",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": "TEST-01",
+            "source_quote": "TEST-01",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 4,
+              "end": 11
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": null,
+            "source_quote": "数量: 100個（訂正：200個）",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 12,
+              "end": 29
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": null,
+            "source_quote": "数量: 100個（訂正：200個）",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 12,
+              "end": 29
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_name",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "quantity",
+            "reason": "矛盾・訂正あり：原文の両方の記載を確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "quantity_unit",
+            "reason": "矛盾・訂正あり：原文の両方の記載を確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "CONFLICTING_VALUES",
+            "severity": "hold",
+            "message": "数量に矛盾・訂正候補があり、どれも選択していません。 原文: 「数量: 100個（訂正：200個）」 [12, 29)",
+            "source": "quantity",
+            "required_action": "入力者が両方の記載と訂正の経緯を確認してください。最新・最大・高信頼度という理由だけで選ばず、依頼元または正式な確認担当へ確認してください。"
+          },
+          {
+            "code": "CONFLICTING_VALUES",
+            "severity": "hold",
+            "message": "数量単位に矛盾・訂正候補があり、どれも選択していません。 原文: 「数量: 100個（訂正：200個）」 [12, 29)",
+            "source": "quantity_unit",
+            "required_action": "入力者が両方の記載と訂正の経緯を確認してください。最新・最大・高信頼度という理由だけで選ばず、依頼元または正式な確認担当へ確認してください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "LOCAL_RULE_BASELINE",
+            "severity": "info",
+            "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "b127ce81-acf8-4185-92f3-d4c900042d3f"
+      },
+      "execution": {
+        "mode": "local",
+        "model": null,
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "started_at": "2026-08-30T23:03:30.733Z",
+        "completed_at": "2026-08-30T23:03:30.738Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "multiple-final-local",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "e964bdd9-e789-4c94-b2e4-fd1569d71893",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [],
+        "warnings_and_holds": [
+          {
+            "code": "MULTIPLE_ITEMS",
+            "severity": "hold",
+            "message": "複数商品の依頼です。先頭商品だけを採用せず、依頼全体を保留しました。",
+            "source": "request_text",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "04025d8c-0a8a-4fbe-aff4-872aabeab361"
+      },
+      "execution": {
+        "mode": "local",
+        "model": null,
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "started_at": "2026-08-30T23:05:28.752Z",
+        "completed_at": "2026-08-30T23:05:28.761Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "correction-final-local",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "4296a59a-bc6a-40df-869e-cf96f8241102",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客A",
+            "source_quote": "検証用顧客A",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": "TEST-01",
+            "source_quote": "TEST-01",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 4,
+              "end": 11
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": null,
+            "source_quote": "数量: 100個（訂正：200個）",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 12,
+              "end": 29
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_name",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "quantity",
+            "reason": "矛盾・訂正あり：原文の両方の記載を確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "quantity_unit",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "requested_delivery_date",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "CONFLICTING_VALUES",
+            "severity": "hold",
+            "message": "数量に矛盾・訂正候補があり、どれも選択していません。 原文: 「数量: 100個（訂正：200個）」 [12, 29)",
+            "source": "quantity",
+            "required_action": "入力者が両方の記載と訂正の経緯を確認してください。最新・最大・高信頼度という理由だけで選ばず、依頼元または正式な確認担当へ確認してください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "LOCAL_RULE_BASELINE",
+            "severity": "info",
+            "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "57a99c87-c4a9-43cd-aaae-d6a0ff8ce21e"
+      },
+      "execution": {
+        "mode": "local",
+        "model": null,
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 0,
+        "verified_external_extraction": false,
+        "started_at": "2026-08-30T23:05:32.223Z",
+        "completed_at": "2026-08-30T23:05:32.232Z"
+      },
+      "revision": 1
+    }
+  }
+]

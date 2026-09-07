@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>見積・受注前処理エージェント</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">東和精密部品株式会社</p>
+        <h1>見積・受注前処理エージェント</h1>
+        <p>見積依頼の確認・検索・前処理を支援します</p>
+      </header>
+
+      <aside id="demo-banner" class="demo-banner" aria-label="デモ環境情報">
+        <div><strong>模擬データを使用するデモ環境です</strong><br><span>実在する顧客情報・実価格・図面は入力しないでください。</span></div>
+        <dl>
+          <div><dt>ログイン中</dt><dd id="demo-user">確認中</dd></div>
+          <div><dt>データ基準日</dt><dd id="demo-date">確認中</dd></div>
+          <div><dt>最終操作日時</dt><dd id="demo-last-operation">まだありません</dd></div>
+        </dl>
+        <p class="no-send">メール自動送信機能はありません</p>
+        <button id="logout" class="secondary" type="button">ログアウト</button>
+      </aside>
+
+      <section id="workflow-panel" aria-labelledby="workflow-title">
+        <h2 id="workflow-title">統合ワークフロー</h2>
+        <p>抽出・人間確認・類似検索・承認判定・文面下書きを順番に進めます。各確認工程は省略しません。</p>
+        <p id="workflow-empty" class="notice">まず匿名サンプルを選び、見積依頼を抽出してください。</p>
+        <div id="workflow-content" hidden>
+          <p id="workflow-id" class="help"></p>
+          <div id="workflow-steps" class="workflow-steps" aria-label="処理の進み具合"></div>
+          <div class="workflow-next-box">
+            <strong>次に行うこと</strong>
+            <p id="workflow-next-action"></p>
+            <button id="workflow-next" type="button">該当箇所へ移動</button>
+            <button id="workflow-refresh" type="button">統合状況を再表示</button>
+          </div>
+          <details><summary>機能間で受け渡した値を見る</summary><div id="workflow-handoffs" class="workflow-handoffs"></div></details>
+          <details><summary>各処理の結果をまとめて見る</summary><pre id="workflow-results" class="result"></pre></details>
+          <details id="workflow-log"><summary>保存された処理ログを見る</summary><ol id="workflow-log-list" class="workflow-log-list"></ol></details>
+        </div>
+      </section>
+
+      <section aria-labelledby="extraction-title">
+        <h2 id="extraction-title">見積依頼の情報抽出</h2>
+        <p>1依頼につき1商品。複数商品は依頼全体を保留し、先頭商品だけを採用しません。</p>
+        <p class="notice">模擬データ専用です。実業務データ・図面原本は入力しないでください。AIやルールの出力は人間が確認してください。</p>
+        <label>練習用の匿名サンプル
+          <select id="extraction-sample"><option value="">サンプルを選択</option></select>
+        </label>
+        <p id="sample-source" class="help"></p>
+        <form id="extraction-form" class="extraction-form">
+          <label>顧客名（内部確認用）<input id="ex-customer" maxlength="200" required autocomplete="off"></label>
+          <label>受付日時（タイムゾーン付き）<input id="ex-received" placeholder="2026-08-30T09:00:00+09:00" required></label>
+          <label>受付経路<select id="ex-channel"><option value="email">メール</option><option value="web">Web</option><option value="fax">FAXメモ</option><option value="phone">電話メモ</option><option value="other">その他</option></select></label>
+          <label>案件種別<select id="ex-case"><option>規格品</option><option>類似品</option><option>新規特注</option><option>緊急</option></select></label>
+          <label>原文の商品数<select id="ex-items"><option value="unknown">未確認・判断できない</option><option value="single">1商品と確認した</option><option value="multiple">複数商品</option></select></label>
+          <label>処理方式<select id="ex-mode"><option value="local">ローカル簡易抽出（AIなし・外部送信なし）</option><option value="gemini">Gemini抽出（匿名サンプルのみ）</option></select></label>
+          <label class="full-width">依頼メール本文・メモ<textarea id="ex-text" rows="9" maxlength="10000" required></textarea></label>
+          <div id="ex-external" class="full-width" hidden>
+            <p id="ex-destination"></p>
+            <p>送るもの：下の匿名化本文と抽出用プロンプト・JSONスキーマ。顧客名は仮IDに置換し、受付情報・原本・CSV・DB情報は送りません。最大1回の送信です。</p>
+            <pre id="ex-send-preview" class="result"></pre>
+            <label class="check-label"><input type="checkbox" id="ex-consent">表示された匿名サンプルを今回Geminiへ送信することに同意する（利用料が発生する場合があります）</label>
+          </div>
+          <button id="ex-submit">抽出する</button>
+        </form>
+        <p id="ex-message" class="result" role="status" aria-live="polite">匿名サンプルを選択してください。自動送信はしません。</p>
+        <div id="ex-output" hidden>
+          <p id="ex-run" class="help"></p>
+          <details open><summary>抽出時の警告・安全上の制限（回答の解消状態とは別）</summary><ul id="ex-warnings"></ul></details>
+          <h3>未確定の入力欄</h3><ul id="ex-missing"></ul>
+          <p class="notice">後工程への引渡し：不可（未確認下書き）。正式な確認担当・案件別の必須項目・承認条件は未設定です。入力者が原文と確認事項を整理し、業務責任者が確認担当と承認条件を決定するまでは、価格確定・納期保証・顧客送信に使用しないでください。</p>
+          <h3>抽出候補と原文の照合</h3>
+          <div class="table-scroll"><table><thead><tr><th>項目</th><th>候補・修正下書き</th><th>初回候補の原文引用・位置</th><th>信頼度</th></tr></thead><tbody id="ex-fields"></tbody></table></div>
+          <p class="help">原文引用・警告は初回抽出時の記録です。人間が値を修正しても初回の記録は書き換えません。信頼度は正答確率ではありません。対応単位：個・本・枚・台・組・セット・式・箱・袋・kg・g・m・mm。ほかの単位は勝手に換算せず手動確認してください。</p>
+          <div id="business-editor">
+            <h3>回答根拠と現在の確認状態</h3>
+            <p class="notice">回答と解消状態は人間の記録です。AIには送信しません。「解消済み」は正式承認ではありません。全項目が全案件で必須という意味でもありません。</p>
+            <label>記録者名（ログイン利用者）<input id="br-recorder" maxlength="100" autocomplete="off" readonly></label>
+            <h4>回答を追加する</h4>
+            <p class="help">回答は追記式です。誤記や差し替えは、新しい回答に訂正内容を記入し、項目の根拠を付け替えてください。回答を追加しないときは以下の4欄を空欄にします。</p>
+            <div class="review-grid">
+              <label>回答者・役割<input id="br-respondent" maxlength="200"></label>
+              <label>回答を確認した日時（日本時間）<input id="br-responded" type="datetime-local"></label>
+              <label class="full-width">根拠資料・参照番号・版<input id="br-reference" maxlength="1000" placeholder="例：顧客の回答メール、図面番号・版、社内確認記録"></label>
+              <label class="full-width">回答原文・確認内容<textarea id="br-answer" maxlength="5000" rows="4"></textarea></label>
+            </div>
+            <h4>希望納期の指定</h4>
+            <div class="review-grid">
+              <label>希望納期の形式<select id="br-delivery-kind"><option value="unknown">未確認</option><option value="date">単一日（上の希望納期欄）</option><option value="window">希望期間</option></select></label>
+              <div id="br-window" class="review-grid full-width" hidden>
+                <label>希望期間の開始日<input id="br-start" type="date"></label>
+                <label>希望期間の終了日<input id="br-end" type="date"></label>
+              </div>
+            </div>
+            <p class="help">希望期間へ切り替えると単一日の下書きは空欄になります。過去の保存値は履歴に残ります。希望日・希望期間は当社の納品保証ではありません。</p>
+            <h4>項目ごとの解消状態</h4>
+            <p class="help">「解消済み／今回不要」には判断理由と根拠を選択してください。「回答待ち」は確認先・確認事項を記入します。複数の根拠はチェックで選べます。</p>
+            <p id="br-summary" class="notice"></p>
+            <div id="br-resolutions"></div>
+          </div>
+          <h3>保存された回答根拠</h3><div id="br-answers"></div>
+          <details><summary>修正・確認履歴（直近20件。古い履歴もDBに保存）</summary><div id="br-history"></div></details>
+          <details><summary>初回抽出結果（変更しない記録）</summary><pre id="br-initial" class="result"></pre></details>
+          <label class="check-label"><input id="ex-reviewed" type="checkbox">原文を照合した。これは修正下書きの保存であり、正式な確認・価格や納期の承認ではないことを理解した。</label>
+          <button id="ex-save" type="button">修正下書きを保存</button>
+          <button id="ex-reload" type="button">保存した結果を再表示</button>
+          <div id="similar-search-panel">
+            <h3>類似案件検索・名寄せ支援</h3>
+            <p class="notice">検索はローカルDB内だけで実行します。候補・過去価格は自動確定しません。実際の価格、仕様、加工可否、納期は人間が確認してください。</p>
+            <div class="search-actions">
+              <label>検索条件の例
+                <select id="ss-sample"><option value="">現在の抽出候補を使う</option></select>
+              </label>
+              <button id="ss-current" type="button">現在の抽出候補を検索条件へコピー</button>
+            </div>
+            <div class="review-grid" id="ss-inputs">
+              <label>顧客名<input id="ss-customer" maxlength="1000"></label>
+              <label>品番<input id="ss-product-code" maxlength="1000"></label>
+              <label>品名<input id="ss-product-name" maxlength="1000"></label>
+              <label>材質<input id="ss-material" maxlength="1000"></label>
+              <label>加工種別（確定後）<input id="ss-process-type" maxlength="1000" placeholder="候補確認または技術担当の回答を入力"></label>
+              <label>数量<input id="ss-quantity" type="number" min="0" step="any"></label>
+              <label>単位<input id="ss-unit" maxlength="1000"></label>
+              <label>寸法<input id="ss-dimensions" maxlength="1000"></label>
+              <label>公差<input id="ss-tolerance" maxlength="1000"></label>
+            </div>
+            <p class="help">例は配布CSVの表記ゆれを確認するための技術テストです。抽出結果を変更・保存するものではありません。</p>
+            <label class="check-label"><input id="ss-ack" type="checkbox">検索条件を確認した。候補提示であり、自動名寄せ・価格確定ではないことを理解した。</label>
+            <button id="ss-start" type="button">名寄せ候補を検索</button>
+            <p id="ss-message" class="result" role="status">未実行</p>
+            <div id="ss-entities" hidden>
+              <h4>顧客候補</h4><div id="ss-customers"></div>
+              <h4>商品候補</h4><div id="ss-products"></div>
+              <div id="ss-process-panel">
+                <h4>加工種別の確定</h4>
+                <p class="help">現在の商品マスタには加工種別列がありません。過去実績から一意な候補を提示できますが、AIやシステムだけでは確定しません。一意でない場合は技術担当へ確認してください。</p>
+                <button id="ss-process-suggest" type="button">選択した顧客・商品で加工種別候補を確認</button>
+                <p id="ss-process-message" class="result" role="status">候補未確認</p>
+                <div class="review-grid">
+                  <label>確定経路<select id="ss-process-source"><option value="past_history">一意な過去実績候補を営業が確認</option><option value="technical_confirmed">技術担当が確定</option><option value="technical_required">未確定のため技術確認へ回す</option></select></label>
+                  <label>確認者・記録者<input id="ss-process-confirmed-by" maxlength="100" placeholder="例：営業担当者、技術担当者"></label>
+                  <label class="full-width">確認根拠・技術確認へ回す理由<textarea id="ss-process-basis" maxlength="1000" rows="3"></textarea></label>
+                </div>
+                <label class="check-label"><input id="ss-process-confirmed" type="checkbox">加工種別の確定経路と根拠を確認した。過去実績候補は人間の確認前に確定せず、未確定時は価格比較を行わない。</label>
+              </div>
+              <button id="ss-quotes" type="button">加工種別の記録後に過去見積を検索／技術確認へ回す</button>
+            </div>
+            <div id="ss-quotes-panel" hidden>
+              <h4>類似する過去見積候補</h4>
+              <p class="help">得点は説明可能なルール値であり、正答確率ではありません。差異・比較不能項目を確認してください。</p>
+              <p id="ss-price-definition" class="notice"></p>
+              <p id="ss-price-warning" class="price-analysis" role="status"></p>
+              <div id="ss-quote-results"></div>
+              <label>判断<select id="ss-decision"><option value="accepted">候補を参考案件として採用</option><option value="rejected">候補を却下／手動検索へ切替</option></select></label>
+              <label>採用・却下理由<textarea id="ss-reason" maxlength="1000" rows="3"></textarea></label>
+              <button id="ss-save-decision" type="button">判断記録を保存</button>
+            </div>
+            <details><summary>固定JSONと検索監査情報を見る</summary><pre id="ss-json" class="result">未実行</pre></details>
+          </div>
+          <div id="approval-email-panel">
+            <h3>承認要否判定・メール案作成</h3>
+            <p class="notice">承認はローカルの固定ルールで判定します。粗利率・値引率の正式閾値は業務責任者の決定待ちです。メールは下書きのみで、この画面から送信できません。</p>
+            <h4>承認判定の入力</h4>
+            <div class="review-grid approval-input-grid">
+              <label>予定見積金額（円）<input id="ae-price" type="number" min="1" step="1"></label>
+              <label>原価（円）<input id="ae-cost" type="number" min="0" step="1"></label>
+              <label>値引き前の基準価格（円）<input id="ae-list-price" type="number" min="1" step="1"></label>
+              <div class="approval-check-group full-width">
+                <label class="check-label"><input id="ae-tech" type="checkbox">技術確認が必要</label>
+                <label class="check-label"><input id="ae-supplier" type="checkbox">外注見積の確認が必要</label>
+              </div>
+              <label class="full-width">技術・外注確認の根拠<textarea id="ae-route-basis" maxlength="1000" rows="2" placeholder="必要にチェックした場合に入力"></textarea></label>
+            </div>
+            <p class="help">粗利率＝（予定見積金額－原価）÷予定見積金額、値引率＝（基準価格－予定見積金額）÷基準価格としてサーバー側で再計算します。</p>
+            <label class="check-label approval-ack"><input id="ae-ack" type="checkbox">入力値を確認した。判定は暫定ルールによる支援であり、正式承認ではないことを理解した。</label>
+            <button id="ae-evaluate" type="button">承認要否を判定・記録</button>
+            <p id="ae-message" class="result" role="status">未実行</p>
+            <div id="ae-result" hidden>
+              <p id="ae-summary" class="approval-result"></p>
+              <p id="ae-approvers" class="approval-approvers" hidden></p>
+              <ul id="ae-rules"></ul>
+              <details><summary>判定JSONと監査情報を見る</summary><pre id="ae-json" class="result"></pre></details>
+
+              <h4>メール下書き</h4>
+              <div class="review-grid">
+                <label>文面の種類<select id="ae-draft-type"><option value="customer_inquiry">顧客への不足情報確認</option><option value="internal_review">社内への確認依頼</option><option value="quote_notice">顧客への見積回答予告</option></select></label>
+                <label>宛先の役割<select id="ae-recipient"><option value="顧客担当者">顧客担当者</option><option value="技術担当者">技術担当者</option><option value="購買・外注担当者">購買・外注担当者</option><option value="管理職">管理職</option></select></label>
+                <label>生成方式<select id="ae-draft-mode"><option value="local">ローカル定型文（外部送信なし）</option><option value="gemini">Gemini下書き（匿名・最小化情報のみ）</option></select></label>
+                <label>自社担当者名<input id="ae-sender" maxlength="100" placeholder="例：営業担当者"></label>
+                <label class="full-width">顧客向け問い合わせ番号・元メール件名<input id="ae-customer-reference" maxlength="300" placeholder="例：お客様問い合わせ番号 ABC-123／元メール件名「PPSカバー80の見積依頼」"></label>
+                <label class="full-width">追加で確認する事項（1行1件）<textarea id="ae-questions" maxlength="3000" rows="4"></textarea></label>
+              </div>
+              <div id="ae-external" hidden>
+                <p>送信先：Google Gemini API。送るものは文面種類・目的、宛先の役割、匿名文の種類、確認項目と追加質問の件数、禁止事項だけです。顧客名、商品名、品番、案件番号、顧客向け問い合わせ番号・元メール件名、担当者名、不足項目名、追加質問、図面番号、価格、原価、依頼原文、メールアドレスは送りません。</p>
+                <pre id="ae-preview" class="result"></pre>
+                <label class="check-label"><input id="ae-consent" type="checkbox">表示された匿名・最小化情報を今回Geminiへ1回送信することに同意する</label>
+              </div>
+              <button id="ae-generate" type="button">メール下書きを作成</button>
+              <p id="ae-draft-message" class="result" role="status">未作成</p>
+              <div id="ae-draft" hidden>
+                <label>件名<input id="ae-subject" maxlength="150"></label>
+                <label>本文<textarea id="ae-body" maxlength="3000" rows="12"></textarea></label>
+                <p id="ae-quality" class="approval-result"></p>
+                <p class="notice">下書きです。価格・納期・宛先・確認事項を人間が照合してください。この画面には送信ボタンも送信APIもありません。</p>
+                <div class="review-grid">
+                  <label>下書きの判断<select id="ae-decision"><option value="adopted">修正後の下書きを採用</option><option value="rejected">下書きを却下</option></select></label>
+                  <label>記録者名（ログイン利用者）<input id="ae-reviewer" maxlength="100" readonly></label>
+                  <label class="full-width">採用・却下理由<textarea id="ae-review-reason" maxlength="1000" rows="3"></textarea></label>
+                </div>
+                <button id="ae-save-review" type="button">下書きの判断を記録</button>
+                <p id="ae-review-message" class="result" role="status" aria-live="polite">未記録</p>
+              </div>
+            </div>
+          </div>
+          <details><summary>固定JSONと実行情報を見る</summary><pre id="ex-json" class="result"></pre></details>
+        </div>
+      </section>
+
+      <section>
+        <h2>環境ステータス</h2>
+        <div id="status" class="cards" aria-live="polite"></div>
+        <button id="write-check">DB書込み・読出しを確認</button>
+        <p id="write-result" class="result"></p>
+      </section>
+
+      <section>
+        <h2>読込件数</h2>
+        <table>
+          <thead><tr><th>データ</th><th>件数</th></tr></thead>
+          <tbody id="counts"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>任意レコード検索</h2>
+        <form id="search-form">
+          <label>対象
+            <select id="search-type">
+              <option value="customer">顧客</option>
+              <option value="product">商品</option>
+              <option value="quote">過去見積</option>
+              <option value="request">見積依頼</option>
+              <option value="supplier">外注先</option>
+            </select>
+          </label>
+          <label>検索語 <input id="search-query" value="ミナト" required></label>
+          <button>検索</button>
+        </form>
+        <pre id="search-result" class="result">未実行</pre>
+      </section>
+
+      <section>
+        <h2>AI接続テスト</h2>
+        <p>下の固定文だけを1回送信します。自動再試行・業務データ送信は行いません。</p>
+        <form id="ai-form">
+          <label>診断用の固定文 <input id="ai-prompt" value="接続確認です。日本語でOKとだけ答えてください。" readonly></label>
+          <label class="check-label"><input id="ai-consent" type="checkbox">送信前プレビューを確認し、今回1回の送信に同意する</label>
+          <button>テスト</button>
+        </form>
+        <pre id="ai-result" class="result">未実行</pre>
+      </section>
+
+      <section aria-labelledby="reset-title">
+        <h2 id="reset-title">デモデータのリセット</h2>
+        <p>CSV由来の5データを再投入し、抽出・名寄せ・承認・下書き・DB書込確認の操作記録を初期化します。監査ログ、ログイン状態、CSV原本は削除しません。</p>
+        <p class="notice">模擬データ専用の環境でのみ動作します。実行前に確認画面を表示します。</p>
+        <button id="demo-reset" class="danger" type="button">デモデータを初期状態へ戻す</button>
+        <p id="demo-reset-message" class="result" role="status">未実行</p>
+      </section>
+    </main>
+    <script type="module" src="/workflow.js"></script>
+    <script type="module" src="/app.js"></script>
+    <script type="module" src="/extraction.js"></script>
+    <script type="module" src="/approval-email.js"></script>
+  </body>
+</html>

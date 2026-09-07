@@ -1,0 +1,33 @@
+{
+  "name": "lesson4-estimate-mvp-environment",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "db:start": "bash scripts/db-start.sh",
+    "db:stop": "bash scripts/db-stop.sh",
+    "db:migrate": "node scripts/migrate-db.mjs",
+    "db:seed-demo": "node scripts/seed-demo-data.mjs",
+    "db:load": "npm run db:migrate && npm run db:seed-demo",
+    "db:prepare-extraction": "node scripts/prepare-extraction-db.mjs",
+    "db:prepare-approval-email": "node scripts/prepare-approval-email-db.mjs",
+    "db:prepare-workflow": "node scripts/prepare-workflow-db.mjs",
+    "auth:hash-password": "node scripts/hash-password.mjs",
+    "dev": "node src/server.mjs",
+    "start": "node src/server.mjs",
+    "render:start": "node scripts/render-start.mjs",
+    "test": "node --test",
+    "verify:similar-search": "node scripts/verify-similar-search-step2.mjs",
+    "verify:similar-search:business-12": "node scripts/verify-similar-search-business-12.mjs",
+    "verify:price-difference": "node scripts/verify-price-difference-event.mjs",
+    "verify:demo-scenarios": "node scripts/verify-demo-scenarios.mjs",
+    "verify:chapter8:normal-comparable": "node scripts/verify-comparable-normal-flow.mjs",
+    "verify:process-type-routing": "node scripts/verify-process-type-routing.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "date_jst": "2026-08-31",
+  "source": "Saved browser output after actual Gemini calls; not raw provider response",
+  "result_file": "extraction-step3-retest-v11-results-2026-08-31.json",
+  "cases": [
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "request_id": "5216ad4b-a580-4d0d-a44f-6c11c6b882f8",
+      "audit_log_id": "c2abe16e-2e69-4290-96ef-5bb2b352f019",
+      "schema_pass": true,
+      "value_matches": 9,
+      "value_total": 9,
+      "differences": [],
+      "missing_pass": true,
+      "expected_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "ambiguity_pass": true,
+      "expected_ambiguity": [],
+      "actual_ambiguity": [],
+      "ambiguous_fields_without_source": [],
+      "quote_checks": 5,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "HUMAN_REVIEW_REQUIRED",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.1",
+      "rule_version": "extraction-rules-1.1",
+      "elapsed_ms": 2104,
+      "pass": true
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "request_id": "b42baee0-3ca5-408c-ab2e-61b2dac0a8a5",
+      "audit_log_id": "c87292e3-2fcf-45b8-81dd-8319fd0ec35d",
+      "schema_pass": true,
+      "value_matches": 9,
+      "value_total": 9,
+      "differences": [],
+      "missing_pass": true,
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "ambiguity_pass": true,
+      "expected_ambiguity": [
+        "tolerance"
+      ],
+      "actual_ambiguity": [
+        "tolerance"
+      ],
+      "ambiguous_fields_without_source": [],
+      "quote_checks": 6,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "AMBIGUOUS",
+        "HUMAN_REVIEW_REQUIRED",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.1",
+      "rule_version": "extraction-rules-1.1",
+      "elapsed_ms": 1689,
+      "pass": true
+    },
+    {
+      "id": "ambiguous",
+      "source_rfq": "RFQ-00004",
+      "request_id": "dd82468c-94e2-44b1-8bdf-01b04b797414",
+      "audit_log_id": "f0d1080a-3c97-4b79-8ec9-4cb3e0d07d92",
+      "schema_pass": true,
+      "value_matches": 9,
+      "value_total": 9,
+      "differences": [],
+      "missing_pass": true,
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "ambiguity_pass": false,
+      "expected_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_ambiguity": [
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "ambiguous_fields_without_source": [
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "quote_checks": 5,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "AMBIGUOUS",
+        "AMBIGUOUS",
+        "AMBIGUOUS",
+        "AMBIGUOUS",
+        "HUMAN_REVIEW_REQUIRED",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.1",
+      "rule_version": "extraction-rules-1.1",
+      "elapsed_ms": 1803,
+      "pass": false
+    }
+  ],
+  "summary": {
+    "cases_passed": 2,
+    "cases_total": 3,
+    "schema_passed": 3,
+    "value_matches": 27,
+    "value_total": 27,
+    "llm_field_matches": 24,
+    "llm_field_total": 24,
+    "external_attempts": 3
+  },
+  "database": {
+    "rows": 3,
+    "review_drafts": 0,
+    "checks": [
+      {
+        "id": "clear",
+        "output_matches_browser": true,
+        "execution_matches_browser": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      },
+      {
+        "id": "missing",
+        "output_matches_browser": true,
+        "execution_matches_browser": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      },
+      {
+        "id": "ambiguous",
+        "output_matches_browser": true,
+        "execution_matches_browser": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      }
+    ]
+  }
+}

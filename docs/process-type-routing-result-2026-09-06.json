@@ -1,0 +1,202 @@
+{
+  "report_version": "process-type-routing-1.0",
+  "executed_at": "2026-09-06T10:09:18.884Z",
+  "result": "合格",
+  "source_limit": "現行20_商品マスタに加工種別列はないため、商品マスタ自動確定は未利用。",
+  "suggestion": {
+    "rule_version": "process-type-routing-1.0",
+    "master": {
+      "available": false,
+      "value": null,
+      "source": "product_master",
+      "note": "現在の20_商品マスタには加工種別列がないため、自動取得できません。"
+    },
+    "candidates": [
+      {
+        "process_type": "板金",
+        "count": 2,
+        "share_percent": 50,
+        "quote_ids": [
+          "Q-230617-0583",
+          "Q-230711-0668"
+        ],
+        "latest_quote_date": "2023-07-11",
+        "source": "past_history"
+      },
+      {
+        "process_type": "樹脂切削",
+        "count": 1,
+        "share_percent": 25,
+        "quote_ids": [
+          "Q-250425-0697"
+        ],
+        "latest_quote_date": "2025-04-25",
+        "source": "past_history"
+      },
+      {
+        "process_type": "短納期加工",
+        "count": 1,
+        "share_percent": 25,
+        "quote_ids": [
+          "Q-231103-0693"
+        ],
+        "latest_quote_date": "2023-11-03",
+        "source": "past_history"
+      }
+    ],
+    "requires_human_confirmation": true,
+    "final_decision_by_ai": false,
+    "security": {
+      "execution": "local_postgresql_rules",
+      "external_ai_calls": 0
+    },
+    "status": "multiple_candidates",
+    "next_action": "過去実績に複数の加工種別があります。営業やAIで選ばず、技術担当が加工種別を確定してください。"
+  },
+  "controls": {
+    "sales_choice_from_multiple_candidates_rejected": {
+      "status": 400,
+      "code": "PROCESS_TYPE_HISTORY_INVALID",
+      "error": "一意な過去実績候補を営業が確認した記録が必要です。"
+    },
+    "price_comparison_not_executed_before_confirmation": {
+      "rule_version": "price-difference-rules-1.0",
+      "thresholds_percent": {
+        "attention_percent": 10,
+        "warning_percent": 20,
+        "stop_percent": 30
+      },
+      "definition": {
+        "source_field": "quote_price",
+        "amount_type": "unspecified",
+        "currency": "unspecified",
+        "tax_treatment": "unspecified",
+        "comparison_assumption": "course_dataset_provisional",
+        "note": "配布CSVに単価／総額、通貨、税区分の定義がないため、課題用データ内の原値を暫定比較します。実業務への価格転用は禁止です。"
+      },
+      "required_comparable_fields": [
+        "product_code",
+        "customer_name",
+        "material",
+        "quantity",
+        "process_type"
+      ],
+      "candidate_count": 5,
+      "comparable_count": 2,
+      "search_results_visible": true,
+      "responsibilities": {
+        "attention": "営業が見積日・注記・顧客条件を確認し、採用・却下理由を記録する。",
+        "warning": "営業と技術担当が材質・加工種別・図面版・現在原価を確認し、採用・却下理由を記録する。",
+        "stop": "営業責任者が承認するまで価格確定と顧客送信を停止する。検索結果は確認のため表示する。"
+      },
+      "status": "alert",
+      "severity": "attention",
+      "baseline": {
+        "quote_id": "Q-230711-0668",
+        "price": 649413,
+        "quote_date": "2023-07-11",
+        "note": null,
+        "failed_fields": [],
+        "comparable": true
+      },
+      "comparisons": [
+        {
+          "quote_id": "Q-230617-0583",
+          "quote_date": "2023-06-17",
+          "price": 661783,
+          "baseline_quote_id": "Q-230711-0668",
+          "baseline_quote_date": "2023-07-11",
+          "baseline_price": 649413,
+          "difference_amount": 12370,
+          "signed_difference_amount": 12370,
+          "difference_percent": 1.9,
+          "numeric_severity": "none",
+          "severity": "attention",
+          "notes": [
+            "材料高騰反映"
+          ],
+          "note_rules": [
+            {
+              "id": "material_cost",
+              "reason": "材料・原価の変動",
+              "mode": "raise_one",
+              "level": null
+            }
+          ],
+          "unclassified_notes": []
+        }
+      ],
+      "highest_risk_comparison": {
+        "quote_id": "Q-230617-0583",
+        "quote_date": "2023-06-17",
+        "price": 661783,
+        "baseline_quote_id": "Q-230711-0668",
+        "baseline_quote_date": "2023-07-11",
+        "baseline_price": 649413,
+        "difference_amount": 12370,
+        "signed_difference_amount": 12370,
+        "difference_percent": 1.9,
+        "numeric_severity": "none",
+        "severity": "attention",
+        "notes": [
+          "材料高騰反映"
+        ],
+        "note_rules": [
+          {
+            "id": "material_cost",
+            "reason": "材料・原価の変動",
+            "mode": "raise_one",
+            "level": null
+          }
+        ],
+        "unclassified_notes": []
+      },
+      "adoption_blocked": false,
+      "failed_comparable_fields": [],
+      "confirmation_items": [
+        "現在の材料原価と過去注記の適用時期",
+        "数量・材質・加工種別・図面版の一致",
+        "特別値引・顧客別条件",
+        "金額の単価／総額・通貨・税区分"
+      ],
+      "message": "価格差異注意：基準Q-230711-0668の過去見積金額649,413とQ-230617-0583の差は12,370（基準比1.9%）です。注記「材料高騰反映」が材料・原価の変動に該当するため注意にしました。確認事項：現在の材料原価と過去注記の適用時期、数量・材質・加工種別・図面版の一致、特別値引・顧客別条件、金額の単価／総額・通貨・税区分。営業が見積日・注記・顧客条件を確認し、採用・却下理由を記録する。"
+    },
+    "held_approval_status": "hold",
+    "held_approver_roles": [
+      "技術担当"
+    ],
+    "process_rule": {
+      "reason": "加工種別が未確定のため価格比較を実行していません。技術担当が加工種別と根拠を確定してください。",
+      "matched": true,
+      "outcome": "hold",
+      "rule_id": "PROCESS-001",
+      "approver_role": "技術担当"
+    },
+    "resumed_after_fictional_technical_answer": {
+      "process_type": "板金",
+      "process_type_source": "technical_confirmed",
+      "previous_quote_decision_cleared_before_reselection": true,
+      "similar_quote_count": 5,
+      "price_status": "alert",
+      "new_quote_decision": {
+        "note": "開発環境の自己申告記録であり、正式承認・価格確定ではありません。",
+        "reason": "技術担当の架空回答で加工種別を確定後、比較条件と注記を確認して参考案件として採用する。",
+        "decision": "accepted",
+        "quote_id": "Q-230711-0668",
+        "reviewed_at": "2026-09-06T10:09:18.877Z",
+        "reviewer_id": "local-development",
+        "identity_mode": "unauthenticated_local"
+      },
+      "approval_status": "not_required",
+      "note": "技術担当の回答は課題用の架空回答であり、原本CSVの事実ではない。"
+    },
+    "external_ai_calls": 0,
+    "final_decision_by_ai": false
+  },
+  "records": {
+    "extraction_id": "4855a0af-6f1a-4e27-82b2-d4548bea00bb",
+    "search_run_id": "ccbfcca1-246e-4575-9772-d3057a31e004",
+    "held_approval_run_id": "e1178192-682b-4fad-b431-559af68e82d6",
+    "resumed_approval_run_id": "f1bd262e-6332-4737-a282-a001e60dffbd"
+  }
+}

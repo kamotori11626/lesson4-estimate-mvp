@@ -1,0 +1,208 @@
+{
+  "date_jst": "2026-08-31",
+  "source": "Saved local backend API output after actual Gemini calls; not raw provider response",
+  "result_file": "extraction-step3-retest-v12-results-2026-08-31.json",
+  "cases": [
+    {
+      "id": "clear",
+      "source_rfq": "RFQ-00003",
+      "request_id": "43cc28b4-6827-40b1-8434-993d7ebb86b6",
+      "audit_log_id": "73c8acfc-deac-48d7-8d48-13b3bd2d7054",
+      "schema_pass": true,
+      "value_matches": 9,
+      "value_total": 9,
+      "differences": [],
+      "missing_pass": true,
+      "expected_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_missing": [
+        "product_name",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "ambiguity_pass": true,
+      "expected_ambiguity": [],
+      "actual_ambiguity": [],
+      "ambiguous_fields_without_source": [],
+      "populated_fields_without_source": [],
+      "quote_checks": 5,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "HUMAN_REVIEW_REQUIRED",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.2",
+      "rule_version": "extraction-rules-1.2",
+      "elapsed_ms": 2353,
+      "pass": true
+    },
+    {
+      "id": "missing",
+      "source_rfq": "RFQ-00001",
+      "request_id": "45b36a56-bf17-4507-b133-55c3efa4317f",
+      "audit_log_id": "8edff5fc-1ea5-43e7-a45f-94fb80ade987",
+      "schema_pass": true,
+      "value_matches": 9,
+      "value_total": 9,
+      "differences": [],
+      "missing_pass": true,
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "actual_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance"
+      ],
+      "ambiguity_pass": true,
+      "expected_ambiguity": [
+        "tolerance"
+      ],
+      "actual_ambiguity": [
+        "tolerance"
+      ],
+      "ambiguous_fields_without_source": [],
+      "populated_fields_without_source": [],
+      "quote_checks": 6,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "AMBIGUOUS",
+        "HUMAN_REVIEW_REQUIRED",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.2",
+      "rule_version": "extraction-rules-1.2",
+      "elapsed_ms": 2584,
+      "pass": true
+    },
+    {
+      "id": "ambiguous",
+      "source_rfq": "RFQ-00004",
+      "request_id": "293da774-2d00-478a-8e9f-c9c4f13ee827",
+      "audit_log_id": "2e9f67c2-d6c8-4d09-aab0-1d14619872d7",
+      "schema_pass": true,
+      "value_matches": 5,
+      "value_total": 9,
+      "differences": [
+        {
+          "field": "customer_name",
+          "expected": "検証用顧客C",
+          "actual": null
+        },
+        {
+          "field": "product_name",
+          "expected": "MCナイロンプレート300",
+          "actual": null
+        },
+        {
+          "field": "quantity",
+          "expected": 1,
+          "actual": null
+        },
+        {
+          "field": "quantity_unit",
+          "expected": "枚",
+          "actual": null
+        }
+      ],
+      "missing_pass": false,
+      "expected_missing": [
+        "product_code",
+        "material",
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_missing": [],
+      "ambiguity_pass": false,
+      "expected_ambiguity": [
+        "dimensions",
+        "tolerance",
+        "requested_delivery_date"
+      ],
+      "actual_ambiguity": [],
+      "ambiguous_fields_without_source": [],
+      "populated_fields_without_source": [],
+      "quote_checks": 0,
+      "quotes_pass": true,
+      "review_state_pass": true,
+      "warning_codes": [
+        "SCOPE_UNCERTAIN",
+        "DEVELOPMENT_ONLY"
+      ],
+      "external_attempts": 1,
+      "connection_pass": true,
+      "version_pass": true,
+      "prompt_version": "extraction-prompt-1.2",
+      "rule_version": "extraction-rules-1.2",
+      "elapsed_ms": 3536,
+      "pass": false
+    }
+  ],
+  "summary": {
+    "cases_passed": 2,
+    "cases_total": 3,
+    "schema_passed": 3,
+    "value_matches": 23,
+    "value_total": 27,
+    "llm_field_matches": 21,
+    "llm_field_total": 24,
+    "external_attempts": 3
+  },
+  "database": {
+    "rows": 3,
+    "review_drafts": 0,
+    "checks": [
+      {
+        "id": "clear",
+        "output_matches_api": true,
+        "execution_matches_api": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      },
+      {
+        "id": "missing",
+        "output_matches_api": true,
+        "execution_matches_api": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      },
+      {
+        "id": "ambiguous",
+        "output_matches_api": true,
+        "execution_matches_api": true,
+        "revision": 1,
+        "input_matches_sample": true,
+        "events": [
+          "started",
+          "finished"
+        ]
+      }
+    ]
+  }
+}

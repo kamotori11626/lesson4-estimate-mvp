@@ -1,0 +1,12 @@
+node_modules/
+.postgres/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+coverage/
+data/processed/*.json
+!data/processed/.gitkeep
+/private/tmp/lesson4-browser-verification.json
+lesson4-browser-verification.json

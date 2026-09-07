@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-09-05T09:38:45.485Z",
+  "execution": "normal local application API; Gemini not used",
+  "automated_elapsed_ms": 232,
+  "planned_spoken_demo_minutes": 9,
+  "scenarios": [
+    {
+      "id": "normal",
+      "workflow_id": "96c555ee-56dd-4fbe-a19d-7a7729dc5631",
+      "request_id": "5129ed67-7060-4301-b168-a33d541130c8",
+      "missing_fields": [],
+      "price_result": "attention",
+      "approval_status": "not_required",
+      "draft_type": "quote_notice",
+      "draft_quality_passed": true,
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "external_ai_calls": 0,
+      "auto_send": false
+    },
+    {
+      "id": "missing",
+      "workflow_id": "057cef94-6e09-4eae-a44e-9e1864257601",
+      "request_id": "fe4af626-4352-4d8a-b8f1-122b08c5cf9f",
+      "missing_fields": ["material", "tolerance", "dimensions", "product_code"],
+      "price_result": "comparison_unavailable",
+      "approval_status": "hold",
+      "approval_rule_ids": ["DATA-001", "PRICE-001"],
+      "draft_type": "customer_inquiry",
+      "draft_quality_passed": true,
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "external_ai_calls": 0,
+      "auto_send": false
+    },
+    {
+      "id": "approval",
+      "workflow_id": "6efe0281-847d-494b-9a22-e36362e237c5",
+      "request_id": "55220b8a-e57c-4e3f-819c-baf96f878dc9",
+      "missing_fields": [],
+      "price_result": "attention",
+      "approval_status": "required",
+      "approval_rule_ids": ["GM-018", "ROUTE-TECH"],
+      "draft_type": "internal_review",
+      "draft_quality_passed": true,
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "external_ai_calls": 0,
+      "auto_send": false
+    }
+  ],
+  "regression_tests": { "total": 166, "passed": 166, "failed": 0 },
+  "browser_check": {
+    "url": "http://127.0.0.1:4173/",
+    "ui": "confirmed",
+    "backend": "confirmed",
+    "database": "confirmed",
+    "application_console_errors": 0,
+    "normal_case_workflow_id": "4b96f746-a708-40ee-8c44-639083f2ee39",
+    "normal_case_status": "review_completed",
+    "normal_case_completed_steps": 7,
+    "normal_case_approval_status": "not_required",
+    "normal_case_draft_quality": "passed"
+  }
+}

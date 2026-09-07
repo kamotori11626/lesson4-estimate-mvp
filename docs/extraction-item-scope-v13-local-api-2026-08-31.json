@@ -1,0 +1,206 @@
+{
+  "verification": "LIVE_LOCAL_API_NO_EXTERNAL_AI",
+  "checked_at": "2026-08-31T02:01:21.268Z",
+  "results": [
+    {
+      "id": "single_specs_unknown",
+      "audit_log_id": "57447b59-afd5-4672-bc9c-80e4db2e4935",
+      "pass": true,
+      "mode": "local",
+      "external_attempts": 0,
+      "rule_version": "extraction-rules-1.3",
+      "extraction_method": "local_baseline",
+      "scope_decision": {
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "single_labelled",
+          "reason": "WHOLE_TEXT_SINGLE_ITEM_ENVELOPE",
+          "evidence": [
+            {
+              "kind": "envelope",
+              "source_quote": "検証用顧客Cです",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 0,
+                "end": 8
+              }
+            },
+            {
+              "kind": "envelope",
+              "source_quote": "前回同様のお見積りをお願いします",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 9,
+                "end": 25
+              }
+            },
+            {
+              "kind": "item_identity",
+              "source_quote": "品名: MCナイロンプレート300",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 27,
+                "end": 44
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "数量: 1枚",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 45,
+                "end": 51
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "希望納期: 来月半ば",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 52,
+                "end": 62
+              }
+            },
+            {
+              "kind": "item_field",
+              "source_quote": "寸法と公差は前回同様です",
+              "source_location": {
+                "source_id": "request_text",
+                "start": 63,
+                "end": 75
+              }
+            }
+          ]
+        },
+        "outcome": "local_baseline"
+      },
+      "values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "warnings": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system"
+        }
+      ],
+      "api_readback_matches": true,
+      "db_matches": true,
+      "finished_event_scope_matches": true
+    },
+    {
+      "id": "unknown_items",
+      "audit_log_id": "6d31fbe7-7eac-497e-869e-bcafd45e4c12",
+      "pass": true,
+      "mode": "local",
+      "external_attempts": 0,
+      "rule_version": "extraction-rules-1.3",
+      "extraction_method": "not_extracted",
+      "scope_decision": {
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "unproven",
+          "reason": "UNSUPPORTED_TEXT",
+          "evidence": []
+        },
+        "outcome": "whole_request_hold"
+      },
+      "values": {
+        "customer_name": null,
+        "product_name": null,
+        "product_code": null,
+        "quantity": null,
+        "quantity_unit": null,
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "warnings": [
+        {
+          "code": "ITEM_COUNT_UNCERTAIN",
+          "source": "request_text"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system"
+        }
+      ],
+      "api_readback_matches": true,
+      "db_matches": true,
+      "finished_event_scope_matches": true
+    },
+    {
+      "id": "multiple_items",
+      "audit_log_id": "1c5857f4-c029-4f94-84f8-b320934a4fba",
+      "pass": true,
+      "mode": "local",
+      "external_attempts": 0,
+      "rule_version": "extraction-rules-1.3",
+      "extraction_method": "not_extracted",
+      "scope_decision": {
+        "model_scope": null,
+        "local_assessment": {
+          "rule": "single-item-envelope-1",
+          "classification": "unproven",
+          "reason": "INPUT_ITEM_COUNT_UNCONFIRMED",
+          "evidence": []
+        },
+        "outcome": "whole_request_hold"
+      },
+      "values": {
+        "customer_name": null,
+        "product_name": null,
+        "product_code": null,
+        "quantity": null,
+        "quantity_unit": null,
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "warnings": [
+        {
+          "code": "MULTIPLE_ITEMS",
+          "source": "request_text"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system"
+        }
+      ],
+      "api_readback_matches": true,
+      "db_matches": true,
+      "finished_event_scope_matches": true
+    }
+  ]
+}

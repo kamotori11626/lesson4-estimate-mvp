@@ -1,0 +1,422 @@
+[
+  {
+    "id": "clear",
+    "transport": "local_backend_api",
+    "local_http_status": 200,
+    "local_request_started_at": "2026-08-31T01:38:03.349Z",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "43cc28b4-6827-40b1-8434-993d7ebb86b6",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客A",
+            "source_quote": "検証用顧客A",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": "ALBKT22",
+            "source_quote": "ALBKT22",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 26,
+              "end": 33
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 100,
+            "source_quote": "100個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 38,
+              "end": 42
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "個",
+            "source_quote": "100個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 38,
+              "end": 42
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": "2025-06-20",
+            "source_quote": "2025-06-20",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 49,
+              "end": 59
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_name",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "73c8acfc-deac-48d7-8d48-13b3bd2d7054"
+      },
+      "execution": {
+        "mode": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 1,
+        "verified_external_extraction": true,
+        "started_at": "2026-08-31T01:38:03.373Z",
+        "completed_at": "2026-08-31T01:38:05.726Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "missing",
+    "transport": "local_backend_api",
+    "local_http_status": 200,
+    "local_request_started_at": "2026-08-31T01:39:43.709Z",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "45b36a56-bf17-4507-b133-55c3efa4317f",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": "検証用顧客B",
+            "source_quote": "検証用顧客B",
+            "source_location": {
+              "source_id": "customer_name",
+              "start": 0,
+              "end": 6
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": "PPSカバー80",
+            "source_quote": "PPSカバー80",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 29,
+              "end": 37
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": 1,
+            "source_quote": "1個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 42,
+              "end": 44
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": "個",
+            "source_quote": "1個",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 42,
+              "end": 44
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": "公差: 不明",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 45,
+              "end": 51
+            },
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": "2026-02-08",
+            "source_quote": "2026-02-08",
+            "source_location": {
+              "source_id": "request_text",
+              "start": 58,
+              "end": 68
+            },
+            "confidence": 1,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [
+          {
+            "field_name": "product_code",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "material",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "dimensions",
+            "reason": "情報不足：確定できる情報を抽出できていません。未記載か抽出漏れか、業務上必要かを確認してください。",
+            "severity": "warning"
+          },
+          {
+            "field_name": "tolerance",
+            "reason": "曖昧：原文の要確認表現を確認してください。推測で確定しないでください。",
+            "severity": "warning"
+          }
+        ],
+        "warnings_and_holds": [
+          {
+            "code": "AMBIGUOUS",
+            "severity": "hold",
+            "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「公差: 不明」 [45, 51)",
+            "source": "tolerance",
+            "required_action": "入力者が引用箇所を照合し、依頼元への確認事項を整理してください。不明値は確定せず、正式な確認担当へ引き継いでください。"
+          },
+          {
+            "code": "HUMAN_REVIEW_REQUIRED",
+            "severity": "warning",
+            "message": "抽出候補です。原文と照合し、必要な修正を行ってください。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "8edff5fc-1ea5-43e7-a45f-94fb80ade987"
+      },
+      "execution": {
+        "mode": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 1,
+        "verified_external_extraction": true,
+        "started_at": "2026-08-31T01:39:43.722Z",
+        "completed_at": "2026-08-31T01:39:46.306Z"
+      },
+      "revision": 1
+    }
+  },
+  {
+    "id": "ambiguous",
+    "transport": "local_backend_api",
+    "local_http_status": 200,
+    "local_request_started_at": "2026-08-31T01:40:17.545Z",
+    "result": {
+      "output": {
+        "schema_version": "extraction-1.0",
+        "request_id": "293da774-2d00-478a-8e9f-c9c4f13ee827",
+        "status": "needs_review",
+        "extracted_fields": {
+          "customer_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_name": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "product_code": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "quantity_unit": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "material": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "dimensions": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "tolerance": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          },
+          "requested_delivery_date": {
+            "value": null,
+            "source_quote": null,
+            "source_location": null,
+            "confidence": null,
+            "human_status": "pending"
+          }
+        },
+        "missing_fields": [],
+        "warnings_and_holds": [
+          {
+            "code": "SCOPE_UNCERTAIN",
+            "severity": "hold",
+            "message": "AIが商品数または見積依頼としての業務範囲を判別できませんでした。抽出値は採用せず、依頼全体を保留しました。",
+            "source": "request_text",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          },
+          {
+            "code": "DEVELOPMENT_ONLY",
+            "severity": "warning",
+            "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+            "source": "system",
+            "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+          }
+        ],
+        "audit_log_id": "2e9f67c2-d6c8-4d09-aab0-1d14619872d7"
+      },
+      "execution": {
+        "mode": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "execution_user_id": "local-development",
+        "identity_mode": "unauthenticated_local",
+        "prompt_version": "extraction-prompt-1.2",
+        "rule_version": "extraction-rules-1.2",
+        "external_attempts": 1,
+        "verified_external_extraction": true,
+        "started_at": "2026-08-31T01:40:17.608Z",
+        "completed_at": "2026-08-31T01:40:21.144Z"
+      },
+      "revision": 1
+    }
+  }
+]

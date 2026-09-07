@@ -1,0 +1,210 @@
+{
+  "notice": "架空回答によるローカルUI操作。業務上の正式な保留解除ではない。回答定義はtests/fixtures/business-replies-2026-09-01.json。",
+  "cases": [
+    {
+      "fixture": "SIM-REPLY-A",
+      "audit_id": "c39a443c-95bb-498b-b4a6-d7b558fba356",
+      "request_id": "0b8eae3e-e599-49d2-8ddc-42f14df221b1",
+      "revision": 2,
+      "external_attempts": 0,
+      "status": "needs_review",
+      "before_values": {
+        "customer_name": "検証用顧客A",
+        "product_name": null,
+        "product_code": "ALBKT22",
+        "quantity": 100,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2025-06-20"
+      },
+      "after_values": {
+        "material": "A5052",
+        "quantity": 100,
+        "tolerance": "±0.1 mm",
+        "dimensions": "22×20×3 mm",
+        "product_code": "ALBKT22",
+        "product_name": "検証用ブラケット",
+        "customer_name": "検証用顧客A",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2025-06-20"
+      },
+      "human_statuses": [
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending"
+      ],
+      "missing_after": [],
+      "warnings_after": [
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。"
+        }
+      ]
+    },
+    {
+      "fixture": "SIM-REPLY-B",
+      "audit_id": "0a58d9b7-b45b-469d-901d-2f877c24811a",
+      "request_id": "f24622ff-3628-4083-a56e-27a5e76422ce",
+      "revision": 2,
+      "external_attempts": 0,
+      "status": "needs_review",
+      "before_values": {
+        "customer_name": "検証用顧客B",
+        "product_name": "PPSカバー80",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "個",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": "2026-02-08"
+      },
+      "after_values": {
+        "material": null,
+        "quantity": 1,
+        "tolerance": null,
+        "dimensions": null,
+        "product_code": null,
+        "product_name": "PPSカバー80",
+        "customer_name": "検証用顧客B",
+        "quantity_unit": "個",
+        "requested_delivery_date": "2026-02-08"
+      },
+      "human_statuses": [
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending"
+      ],
+      "missing_after": [
+        "material",
+        "tolerance",
+        "dimensions",
+        "product_code"
+      ],
+      "warnings_after": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「公差: 不明」 [45, 51)"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。"
+        }
+      ]
+    },
+    {
+      "fixture": "SIM-REPLY-C",
+      "audit_id": "06e18dc8-d331-4849-9aef-08982ad08f5c",
+      "request_id": "05cb939a-e410-4152-b80b-52f7274f043a",
+      "revision": 2,
+      "external_attempts": 0,
+      "status": "needs_review",
+      "before_values": {
+        "customer_name": "検証用顧客C",
+        "product_name": "MCナイロンプレート300",
+        "product_code": null,
+        "quantity": 1,
+        "quantity_unit": "枚",
+        "material": null,
+        "dimensions": null,
+        "tolerance": null,
+        "requested_delivery_date": null
+      },
+      "after_values": {
+        "material": "MCナイロン",
+        "quantity": 1,
+        "tolerance": "±0.3 mm",
+        "dimensions": "300×200×10 mm",
+        "product_code": null,
+        "product_name": "MCナイロンプレート300",
+        "customer_name": "検証用顧客C",
+        "quantity_unit": "枚",
+        "requested_delivery_date": null
+      },
+      "human_statuses": [
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending",
+        "pending"
+      ],
+      "missing_after": [
+        "product_code",
+        "requested_delivery_date"
+      ],
+      "warnings_after": [
+        {
+          "code": "AMBIGUOUS",
+          "source": "dimensions",
+          "message": "寸法に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "tolerance",
+          "message": "公差に曖昧さがあります。確定値は空欄です。 原文: 「寸法と公差は前回同様です」 [63, 75)"
+        },
+        {
+          "code": "AMBIGUOUS",
+          "source": "requested_delivery_date",
+          "message": "希望納期に曖昧さがあります。確定値は空欄です。 原文: 「希望納期: 来月半ば」 [52, 62)"
+        },
+        {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "source": "system",
+          "message": "抽出候補です。原文と照合し、必要な修正を行ってください。"
+        },
+        {
+          "code": "LOCAL_RULE_BASELINE",
+          "source": "system",
+          "message": "ローカル簡易抽出です。AIを使用しておらず、自然文へのAI抽出精度の確認にはなりません。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "source": "system",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。"
+        }
+      ]
+    }
+  ]
+}

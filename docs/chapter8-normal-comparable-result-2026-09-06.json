@@ -1,0 +1,462 @@
+{
+  "report_version": "chapter8-normal-comparable-1.0",
+  "executed_at": "2026-09-06T10:09:10.018Z",
+  "test_case": {
+    "id": "N-COMP-01",
+    "name": "過去実績の加工種別候補を営業が確認する正常ケース",
+    "source_basis": {
+      "file": "data/raw/18_過去見積履歴.csv",
+      "comparable_quotes": [
+        "Q-250708-0699",
+        "Q-250417-1842"
+      ],
+      "customer_name": "京浜ロボティクス株式会社 埼玉工場",
+      "product_code": "S45C-PIN-18",
+      "product_name": "S45Cピン18",
+      "material": "S45C",
+      "quantity": 100,
+      "process_type": "樹脂切削"
+    },
+    "input_text": "京浜ロボティクス株式会社 埼玉工場です。見積をお願いします。\n品名: S45Cピン18\n品番: S45C-PIN-18\n数量: 100個\n材質: S45C\n寸法: φ18×80mm\n公差: ±0.05mm\n希望納期: 2026-10-15",
+    "approval_input": {
+      "planned_price": 100000,
+      "cost": 70000,
+      "list_price": 100000,
+      "required_tech_review": false,
+      "required_supplier_quote": false
+    }
+  },
+  "result": "合格",
+  "checks": [
+    {
+      "name": "UI・バックエンド・DBが正常",
+      "passed": true,
+      "evidence": {
+        "ui": {
+          "ok": true
+        },
+        "backend": {
+          "ok": true
+        },
+        "database": {
+          "ok": true,
+          "database": "lesson4_mvp",
+          "user": "mvp_user",
+          "checked_at": "2026-09-06T10:09:09.787Z"
+        },
+        "ai": {
+          "connected": false,
+          "configured": true,
+          "mode": "gemini",
+          "detail": "キー設定済み。実応答の成功は未確認です（固定文・送信1回の診断）。"
+        }
+      }
+    },
+    {
+      "name": "抽出項目に不足がない",
+      "passed": true,
+      "evidence": []
+    },
+    {
+      "name": "確定後の加工種別だけが検索条件に入った",
+      "passed": true,
+      "evidence": "樹脂切削"
+    },
+    {
+      "name": "過去実績から一意な候補を提示し営業確認を記録した",
+      "passed": true,
+      "evidence": {
+        "suggestion": {
+          "rule_version": "process-type-routing-1.0",
+          "master": {
+            "available": false,
+            "value": null,
+            "source": "product_master",
+            "note": "現在の20_商品マスタには加工種別列がないため、自動取得できません。"
+          },
+          "candidates": [
+            {
+              "process_type": "樹脂切削",
+              "count": 2,
+              "share_percent": 100,
+              "quote_ids": [
+                "Q-250708-0699",
+                "Q-250417-1842"
+              ],
+              "latest_quote_date": "2025-07-08",
+              "source": "past_history"
+            }
+          ],
+          "requires_human_confirmation": true,
+          "final_decision_by_ai": false,
+          "security": {
+            "execution": "local_postgresql_rules",
+            "external_ai_calls": 0
+          },
+          "status": "single_candidate",
+          "next_action": "過去実績2件がすべて「樹脂切削」です。営業が根拠を確認してから採用してください。"
+        },
+        "decision": {
+          "basis": "同一条件の過去実績2件がすべて同じ加工種別。参照:Q-250708-0699、Q-250417-1842",
+          "value": "樹脂切削",
+          "source": "past_history",
+          "confirmed": true,
+          "recorded_at": "2026-09-06T10:09:09.967Z",
+          "confirmed_by": "営業担当(テスト)",
+          "rule_version": "process-type-routing-1.0",
+          "final_decision_by_ai": false
+        }
+      }
+    },
+    {
+      "name": "比較可能な過去見積が2件以上ある",
+      "passed": true,
+      "evidence": {
+        "comparable_count": 2,
+        "quote_ids": [
+          "Q-250708-0699",
+          "Q-250417-1842",
+          "Q-241127-0087",
+          "Q-241019-1759",
+          "Q-240926-0240"
+        ]
+      }
+    },
+    {
+      "name": "想定した過去見積2件を含む",
+      "passed": true,
+      "evidence": [
+        "Q-250708-0699",
+        "Q-250417-1842",
+        "Q-241127-0087",
+        "Q-241019-1759",
+        "Q-240926-0240"
+      ]
+    },
+    {
+      "name": "価格比較で停止されない",
+      "passed": true,
+      "evidence": {
+        "status": "alert",
+        "severity": "attention",
+        "message": "価格差異注意：基準Q-250708-0699の過去見積金額644,104とQ-250417-1842の差は17,647（基準比2.74%）です。注記「急ぎ、値引き」が緊急・短納期条件に該当するため注意にしました。確認事項：現在の材料原価と過去注記の適用時期、数量・材質・加工種別・図面版の一致、特別値引・顧客別条件、金額の単価／総額・通貨・税区分。営業が見積日・注記・顧客条件を確認し、採用・却下理由を記録する。"
+      }
+    },
+    {
+      "name": "承認不要となる",
+      "passed": true,
+      "evidence": {
+        "status": "not_required",
+        "approver_roles": [],
+        "gross_margin_rate": 30,
+        "discount_rate": 0
+      }
+    },
+    {
+      "name": "見積回答予告の下書きを作成できる",
+      "passed": true,
+      "evidence": {
+        "draft_type": "quote_notice",
+        "quality": {
+          "checks": {
+            "auto_send": false,
+            "source_consistency": true,
+            "audience_appropriate": true,
+            "missing_items_complete": true,
+            "business_style_and_length": true,
+            "prohibited_expressions_absent": true
+          },
+          "passed": true,
+          "violations": []
+        },
+        "subject": "【お見積り受付のご連絡】S45C-PIN-18 / S45Cピン18"
+      }
+    },
+    {
+      "name": "人間の採用記録まで保存できる",
+      "passed": true,
+      "evidence": {
+        "status": "adopted",
+        "human_review": {
+          "body": "京浜ロボティクス株式会社 埼玉工場\nご担当者様\n\nお世話になっております。営業担当（テスト）です。\nお見積り内容の確認についてご連絡いたしました。\n対象商品：S45C-PIN-18 / S45Cピン18\n弊社案件番号：2eac2a86-c049-44c8-b8ed-9b47900c53ef\nお客様の問い合わせ番号・元メール件名：比較可能正常ケース N-COMP-01\n正式な見積金額および納期については、社内確認の上、改めてご連絡いたします。\n\n何卒よろしくお願いいたします。",
+          "note": "下書きの確認記録であり、送信・価格確定・納期確約ではありません。",
+          "reason": "価格断定・納期確約がなく、顧客向けの見積回答予告として利用可能なため。",
+          "quality": {
+            "checks": {
+              "auto_send": false,
+              "source_consistency": true,
+              "audience_appropriate": true,
+              "missing_items_complete": true,
+              "business_style_and_length": true,
+              "prohibited_expressions_absent": true
+            },
+            "passed": true,
+            "violations": []
+          },
+          "subject": "【お見積り受付のご連絡】S45C-PIN-18 / S45Cピン18",
+          "decision": "adopted",
+          "reviewer": "営業担当（テスト）",
+          "reviewed_at": "2026-09-06T10:09:10.015Z",
+          "identity_mode": "unauthenticated_local"
+        }
+      }
+    },
+    {
+      "name": "外部AI送信・自動送信がない",
+      "passed": true,
+      "evidence": {
+        "extraction_external_attempts": 0,
+        "search_external_ai_calls": 0,
+        "approval_auto_send": false,
+        "draft_auto_send": false,
+        "draft_send_endpoint": false
+      }
+    }
+  ],
+  "workflow": {
+    "extraction_audit_log_id": "f1e53e25-28d4-4765-bc82-18b9ecc98afc",
+    "search_run_id": "b6ef5bfe-6edc-4474-802b-74c050e613a0",
+    "selected_customer": {
+      "id": "customer:京浜ロボティクス埼玉工場"
+    },
+    "selected_product": {
+      "id": "product:S45CPIN18",
+      "logical_key": "S45CPIN18"
+    },
+    "process_type_suggestion": {
+      "rule_version": "process-type-routing-1.0",
+      "master": {
+        "available": false,
+        "value": null,
+        "source": "product_master",
+        "note": "現在の20_商品マスタには加工種別列がないため、自動取得できません。"
+      },
+      "candidates": [
+        {
+          "process_type": "樹脂切削",
+          "count": 2,
+          "share_percent": 100,
+          "quote_ids": [
+            "Q-250708-0699",
+            "Q-250417-1842"
+          ],
+          "latest_quote_date": "2025-07-08",
+          "source": "past_history"
+        }
+      ],
+      "requires_human_confirmation": true,
+      "final_decision_by_ai": false,
+      "security": {
+        "execution": "local_postgresql_rules",
+        "external_ai_calls": 0
+      },
+      "status": "single_candidate",
+      "next_action": "過去実績2件がすべて「樹脂切削」です。営業が根拠を確認してから採用してください。"
+    },
+    "price_analysis": {
+      "rule_version": "price-difference-rules-1.0",
+      "thresholds_percent": {
+        "attention_percent": 10,
+        "warning_percent": 20,
+        "stop_percent": 30
+      },
+      "definition": {
+        "source_field": "quote_price",
+        "amount_type": "unspecified",
+        "currency": "unspecified",
+        "tax_treatment": "unspecified",
+        "comparison_assumption": "course_dataset_provisional",
+        "note": "配布CSVに単価／総額、通貨、税区分の定義がないため、課題用データ内の原値を暫定比較します。実業務への価格転用は禁止です。"
+      },
+      "required_comparable_fields": [
+        "product_code",
+        "customer_name",
+        "material",
+        "quantity",
+        "process_type"
+      ],
+      "candidate_count": 5,
+      "comparable_count": 2,
+      "search_results_visible": true,
+      "responsibilities": {
+        "attention": "営業が見積日・注記・顧客条件を確認し、採用・却下理由を記録する。",
+        "warning": "営業と技術担当が材質・加工種別・図面版・現在原価を確認し、採用・却下理由を記録する。",
+        "stop": "営業責任者が承認するまで価格確定と顧客送信を停止する。検索結果は確認のため表示する。"
+      },
+      "status": "alert",
+      "severity": "attention",
+      "baseline": {
+        "quote_id": "Q-250708-0699",
+        "price": 644104,
+        "quote_date": "2025-07-08",
+        "note": null,
+        "failed_fields": [],
+        "comparable": true
+      },
+      "comparisons": [
+        {
+          "quote_id": "Q-250417-1842",
+          "quote_date": "2025-04-17",
+          "price": 661751,
+          "baseline_quote_id": "Q-250708-0699",
+          "baseline_quote_date": "2025-07-08",
+          "baseline_price": 644104,
+          "difference_amount": 17647,
+          "signed_difference_amount": 17647,
+          "difference_percent": 2.74,
+          "numeric_severity": "none",
+          "severity": "attention",
+          "notes": [
+            "急ぎ、値引き"
+          ],
+          "note_rules": [
+            {
+              "id": "urgent_premium",
+              "reason": "緊急・短納期条件",
+              "mode": "raise_one",
+              "level": null
+            }
+          ],
+          "unclassified_notes": []
+        }
+      ],
+      "highest_risk_comparison": {
+        "quote_id": "Q-250417-1842",
+        "quote_date": "2025-04-17",
+        "price": 661751,
+        "baseline_quote_id": "Q-250708-0699",
+        "baseline_quote_date": "2025-07-08",
+        "baseline_price": 644104,
+        "difference_amount": 17647,
+        "signed_difference_amount": 17647,
+        "difference_percent": 2.74,
+        "numeric_severity": "none",
+        "severity": "attention",
+        "notes": [
+          "急ぎ、値引き"
+        ],
+        "note_rules": [
+          {
+            "id": "urgent_premium",
+            "reason": "緊急・短納期条件",
+            "mode": "raise_one",
+            "level": null
+          }
+        ],
+        "unclassified_notes": []
+      },
+      "adoption_blocked": false,
+      "failed_comparable_fields": [],
+      "confirmation_items": [
+        "現在の材料原価と過去注記の適用時期",
+        "数量・材質・加工種別・図面版の一致",
+        "特別値引・顧客別条件",
+        "金額の単価／総額・通貨・税区分"
+      ],
+      "message": "価格差異注意：基準Q-250708-0699の過去見積金額644,104とQ-250417-1842の差は17,647（基準比2.74%）です。注記「急ぎ、値引き」が緊急・短納期条件に該当するため注意にしました。確認事項：現在の材料原価と過去注記の適用時期、数量・材質・加工種別・図面版の一致、特別値引・顧客別条件、金額の単価／総額・通貨・税区分。営業が見積日・注記・顧客条件を確認し、採用・却下理由を記録する。"
+    },
+    "selected_quote_id": "Q-250708-0699",
+    "approval_run_id": "948a781f-559a-49d3-b3f1-fc730a17bd0a",
+    "approval": {
+      "policy": {
+        "discount": {
+          "zero": "no_trigger",
+          "owner": "顧客企業の業務責任者",
+          "status": "暫定。正式な値引率閾値・顧客別例外ルールの決定待ち",
+          "positive": "hold"
+        },
+        "gross_margin": {
+          "owner": "顧客企業の業務責任者",
+          "status": "暫定。見積承認ルール.pdf（20%未満）と営業部運用メモ.docx（18%未満）の矛盾解消待ち",
+          "below_18": "required",
+          "at_least_20": "no_trigger",
+          "from_18_below_20": "hold"
+        }
+      },
+      "reason": null,
+      "status": "not_required",
+      "security": {
+        "execution": "local_deterministic_rules",
+        "external_ai_calls": 0,
+        "final_decision_by_ai": false
+      },
+      "input_values": {
+        "cost": 70000,
+        "list_price": 100000,
+        "route_basis": "",
+        "acknowledged": true,
+        "planned_price": 100000,
+        "required_tech_review": false,
+        "required_supplier_quote": false
+      },
+      "rule_results": [
+        {
+          "reason": "再計算した粗利率30%は20%以上のため、粗利率だけでは承認を要求しません。",
+          "matched": true,
+          "outcome": "no_trigger",
+          "rule_id": "GM-020",
+          "approver_role": null
+        },
+        {
+          "reason": "値引率は0%のため、値引きだけでは承認を要求しません。",
+          "matched": true,
+          "outcome": "no_trigger",
+          "rule_id": "DISC-ZERO",
+          "approver_role": null
+        }
+      ],
+      "rule_version": "approval-rules-0.1-draft",
+      "approver_roles": [],
+      "schema_version": "approval-email-1.0",
+      "calculated_values": {
+        "discount_rate": 0,
+        "gross_margin_rate": 30
+      },
+      "extraction_revision": 2
+    },
+    "draft_id": "2d42003b-c4ea-417b-ab2e-990e847cfcf5",
+    "draft": {
+      "subject": "【お見積り受付のご連絡】S45C-PIN-18 / S45Cピン18",
+      "body": "京浜ロボティクス株式会社 埼玉工場\nご担当者様\n\nお世話になっております。営業担当（テスト）です。\nお見積り内容の確認についてご連絡いたしました。\n対象商品：S45C-PIN-18 / S45Cピン18\n弊社案件番号：2eac2a86-c049-44c8-b8ed-9b47900c53ef\nお客様の問い合わせ番号・元メール件名：比較可能正常ケース N-COMP-01\n正式な見積金額および納期については、社内確認の上、改めてご連絡いたします。\n\n何卒よろしくお願いいたします。",
+      "referenced_item_ids": []
+    },
+    "draft_quality": {
+      "checks": {
+        "auto_send": false,
+        "source_consistency": true,
+        "audience_appropriate": true,
+        "missing_items_complete": true,
+        "business_style_and_length": true,
+        "prohibited_expressions_absent": true
+      },
+      "passed": true,
+      "violations": []
+    },
+    "draft_review": {
+      "body": "京浜ロボティクス株式会社 埼玉工場\nご担当者様\n\nお世話になっております。営業担当（テスト）です。\nお見積り内容の確認についてご連絡いたしました。\n対象商品：S45C-PIN-18 / S45Cピン18\n弊社案件番号：2eac2a86-c049-44c8-b8ed-9b47900c53ef\nお客様の問い合わせ番号・元メール件名：比較可能正常ケース N-COMP-01\n正式な見積金額および納期については、社内確認の上、改めてご連絡いたします。\n\n何卒よろしくお願いいたします。",
+      "note": "下書きの確認記録であり、送信・価格確定・納期確約ではありません。",
+      "reason": "価格断定・納期確約がなく、顧客向けの見積回答予告として利用可能なため。",
+      "quality": {
+        "checks": {
+          "auto_send": false,
+          "source_consistency": true,
+          "audience_appropriate": true,
+          "missing_items_complete": true,
+          "business_style_and_length": true,
+          "prohibited_expressions_absent": true
+        },
+        "passed": true,
+        "violations": []
+      },
+      "subject": "【お見積り受付のご連絡】S45C-PIN-18 / S45Cピン18",
+      "decision": "adopted",
+      "reviewer": "営業担当（テスト）",
+      "reviewed_at": "2026-09-06T10:09:10.015Z",
+      "identity_mode": "unauthenticated_local"
+    },
+    "security": {
+      "external_ai_sent": false,
+      "auto_send": false
+    }
+  }
+}

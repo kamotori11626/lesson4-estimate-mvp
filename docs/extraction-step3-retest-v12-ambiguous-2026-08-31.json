@@ -1,0 +1,109 @@
+{
+  "id": "ambiguous",
+  "transport": "local_backend_api",
+  "local_http_status": 200,
+  "local_request_started_at": "2026-08-31T01:40:17.545Z",
+  "result": {
+    "output": {
+      "schema_version": "extraction-1.0",
+      "request_id": "293da774-2d00-478a-8e9f-c9c4f13ee827",
+      "status": "needs_review",
+      "extracted_fields": {
+        "customer_name": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "product_name": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "product_code": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "quantity": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "quantity_unit": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "material": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "dimensions": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "tolerance": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        },
+        "requested_delivery_date": {
+          "value": null,
+          "source_quote": null,
+          "source_location": null,
+          "confidence": null,
+          "human_status": "pending"
+        }
+      },
+      "missing_fields": [],
+      "warnings_and_holds": [
+        {
+          "code": "SCOPE_UNCERTAIN",
+          "severity": "hold",
+          "message": "AIが商品数または見積依頼としての業務範囲を判別できませんでした。抽出値は採用せず、依頼全体を保留しました。",
+          "source": "request_text",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        },
+        {
+          "code": "DEVELOPMENT_ONLY",
+          "severity": "warning",
+          "message": "開発用の確認段階です。利用者認証・業務ルールの承認が未完了のため、後工程の確定入力にはできません。",
+          "source": "system",
+          "required_action": "入力者が原文・停止理由を確認し、正式な確認担当または運用担当へ引き継いでください。後工程への確定入力は禁止です。"
+        }
+      ],
+      "audit_log_id": "2e9f67c2-d6c8-4d09-aab0-1d14619872d7"
+    },
+    "execution": {
+      "mode": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "execution_user_id": "local-development",
+      "identity_mode": "unauthenticated_local",
+      "prompt_version": "extraction-prompt-1.2",
+      "rule_version": "extraction-rules-1.2",
+      "external_attempts": 1,
+      "verified_external_extraction": true,
+      "started_at": "2026-08-31T01:40:17.608Z",
+      "completed_at": "2026-08-31T01:40:21.144Z"
+    },
+    "revision": 1
+  }
+}
