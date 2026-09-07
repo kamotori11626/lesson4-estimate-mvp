@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-09-07T13:02:16.278Z",
+  "public_url": "https://lesson4-estimate-demo.onrender.com",
+  "authenticated_user": "mentor-demo",
+  "unauthenticated_checks": {
+    "screen_status": 303,
+    "redirect": "/login",
+    "business_api_status": 401,
+    "cross_site_post_status": 403
+  },
+  "scenarios": [
+    {
+      "id": "normal",
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "missing_fields": [],
+      "approval_status": "not_required",
+      "draft_quality_passed": true,
+      "external_ai_calls": 0,
+      "auto_send": false
+    },
+    {
+      "id": "missing",
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "missing_fields": ["material", "tolerance", "dimensions", "product_code"],
+      "approval_status": "hold",
+      "draft_quality_passed": true,
+      "external_ai_calls": 0,
+      "auto_send": false
+    },
+    {
+      "id": "approval",
+      "workflow_status": "review_completed",
+      "completed_steps": 7,
+      "missing_fields": [],
+      "approval_status": "required",
+      "draft_quality_passed": true,
+      "external_ai_calls": 0,
+      "auto_send": false
+    }
+  ]
+}
