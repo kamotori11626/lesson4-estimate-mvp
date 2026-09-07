@@ -9,9 +9,9 @@ export function validateRequestBoundary(request, settings) {
   const origin = request.headers.origin;
   if (origin && origin !== settings.appOrigin.origin)
     throw new ExtractionError('ORIGIN_NOT_ALLOWED', '許可された画面から操作してください。', 403);
-  if (request.headers['sec-fetch-site'] === 'cross-site')
-    throw new ExtractionError('CROSS_SITE_REJECTED', '別サイトからの操作は受け付けません。', 403);
   if (STATE_METHODS.has(request.method)) {
+    if (request.headers['sec-fetch-site'] === 'cross-site')
+      throw new ExtractionError('CROSS_SITE_REJECTED', '別サイトからの操作は受け付けません。', 403);
     if (origin !== settings.appOrigin.origin)
       throw new ExtractionError('ORIGIN_REQUIRED', '同じ画面から操作してください。', 403);
     if (!request.headers['content-type']?.toLowerCase().startsWith('application/json'))

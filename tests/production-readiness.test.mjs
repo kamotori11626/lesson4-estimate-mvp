@@ -38,6 +38,14 @@ test('Host・Origin・クロスサイトPOSTを固定の許可Originだけに限
   assert.throws(() => validateRequestBoundary({ ...valid, headers: { ...valid.headers, host: 'evil.example' } }, settings), /許可されたURL/);
   assert.throws(() => validateRequestBoundary({ ...valid, headers: { ...valid.headers, origin: 'https://evil.example' } }, settings), /許可された画面/);
   assert.throws(() => validateRequestBoundary({ ...valid, headers: { ...valid.headers, origin: undefined } }, settings), /同じ画面/);
+  assert.doesNotThrow(() => validateRequestBoundary({
+    method: 'GET',
+    headers: { host: '127.0.0.1:4173', 'sec-fetch-site': 'cross-site' }
+  }, settings));
+  assert.throws(() => validateRequestBoundary({
+    ...valid,
+    headers: { ...valid.headers, 'sec-fetch-site': 'cross-site' }
+  }, settings), /別サイト/);
 });
 
 test('パスワードはscryptハッシュで照合し、Cookieは本番で安全属性と期限を持つ', async () => {
