@@ -167,10 +167,14 @@ const server = http.createServer(async (request, response) => {
       return json(response, 200, { ok: true, user: result.user }, { 'set-cookie': result.cookie });
     }
 
+    // Login assets and the shared stylesheet must be served before session routing.
+    // Otherwise an authenticated browser receives 404 for /styles.css and the
+    // application falls back to an unstyled black-and-white document.
+    if (request.method === 'GET' && publicFiles.has(url.pathname.slice(1))) return file(response, url.pathname.slice(1));
+
     const user = await auth.getSession(request);
     if (!user) {
       if (request.method === 'GET' && (url.pathname === '/login' || url.pathname === '/login.html')) return file(response, 'login.html');
-      if (request.method === 'GET' && publicFiles.has(url.pathname.slice(1))) return file(response, url.pathname.slice(1));
       if (url.pathname.startsWith('/api/')) return json(response, 401, { error: 'ログインしてください。' }, { 'set-cookie': auth.clearCookie() });
       return redirect(response, '/login');
     }
