@@ -4,6 +4,12 @@ import { diagnoseGemini } from './gemini-diagnostic.mjs';
 let lastDiagnostic = null;
 let pendingDiagnostic = null;
 
+function recordDiagnosticStage(entry) {
+  // The diagnostic emits stage/timing metadata only. Never add keys, prompts,
+  // response bodies or exception text to this production log.
+  console.info(JSON.stringify(entry));
+}
+
 export function aiStatus() {
   if (config.ai.provider === 'mock') {
     return { connected: false, mode: 'mock', detail: '外部送信なし。AI接続境界のみ検証可能です。' };
@@ -32,7 +38,11 @@ export async function testAi() {
   }
   // Concurrent clicks share the same request instead of consuming extra quota.
   if (pendingDiagnostic) return pendingDiagnostic;
-  pendingDiagnostic = diagnoseGemini({ apiKey: config.ai.apiKey, model: config.ai.model });
+  pendingDiagnostic = diagnoseGemini({
+    apiKey: config.ai.apiKey,
+    model: config.ai.model,
+    onStage: recordDiagnosticStage
+  });
   try {
     lastDiagnostic = await pendingDiagnostic;
     return lastDiagnostic;

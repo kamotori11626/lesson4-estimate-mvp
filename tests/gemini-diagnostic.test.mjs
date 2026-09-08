@@ -24,6 +24,33 @@ test('固定文だけを1回送信し、リダイレクトを禁止する', asyn
   assert.ok(!JSON.stringify(result).includes(key));
 });
 
+test('診断ログは段階と時刻だけを記録し、秘密・入力文・応答本文を含めない', async () => {
+  const stages = [];
+  const result = await diagnoseGemini({
+    apiKey: key,
+    model,
+    onStage: entry => stages.push(entry),
+    fetchFn: async () => reply(200, { candidates: [{ content: { parts: [{ text: 'OK' }] } }] })
+  });
+
+  assert.equal(result.verified_external_connection, true);
+  assert.deepEqual(stages.map(entry => entry.stage), [
+    'request_started',
+    'response_headers_received',
+    'response_body_read',
+    'completed'
+  ]);
+  assert.equal(new Set(stages.map(entry => entry.diagnostic_id)).size, 1);
+  for (const entry of stages) {
+    assert.deepEqual(Object.keys(entry).sort(), ['diagnostic_id', 'elapsed_ms', 'event', 'stage', 'timestamp']);
+    assert.equal(entry.event, 'gemini_diagnostic');
+    assert.match(entry.timestamp, /^\d{4}-\d{2}-\d{2}T/);
+    assert.equal(Number.isInteger(entry.elapsed_ms), true);
+  }
+  const logText = JSON.stringify(stages);
+  for (const forbidden of [key, diagnosticPrompt, 'OK', model]) assert.ok(!logText.includes(forbidden));
+});
+
 for (const status of [400, 403, 429, 503]) {
   test(`HTTP ${status}でも再試行せず元の詳細を保持する`, async () => {
     let calls = 0;
@@ -70,7 +97,8 @@ test('回答テキストがないHTTP 200は生成成功とみなさない', asy
 
 test('タイムアウトで1回で終了し秘密を含む例外を出さない', async () => {
   let calls = 0;
-  const result = await diagnoseGemini({ apiKey: key, model, timeoutMs: 5, fetchFn: async (_url, { signal }) => {
+  const stages = [];
+  const result = await diagnoseGemini({ apiKey: key, model, timeoutMs: 5, onStage: entry => stages.push(entry), fetchFn: async (_url, { signal }) => {
     calls++;
     return new Promise((resolve, reject) => {
       const timer = setTimeout(() => resolve(reply(200, {})), 100);
@@ -80,6 +108,8 @@ test('タイムアウトで1回で終了し秘密を含む例外を出さない'
   assert.equal(calls, 1);
   assert.equal(result.failure_kind, 'timeout');
   assert.equal(result.http_status, null);
+  assert.deepEqual(stages.map(entry => entry.stage), ['request_started', 'timed_out']);
+  assert.ok(!JSON.stringify(stages).includes(key));
 });
 
 test('不正JSONとネットワーク例外の原文を返さない', async () => {
