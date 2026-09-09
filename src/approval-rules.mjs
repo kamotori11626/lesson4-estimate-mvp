@@ -1,7 +1,7 @@
 import { ExtractionError } from './extraction.mjs';
 
 export const APPROVAL_SCHEMA_VERSION = 'approval-email-1.0';
-export const APPROVAL_RULE_VERSION = 'approval-rules-0.1-draft';
+export const APPROVAL_RULE_VERSION = 'approval-rules-0.2-draft';
 export const RULE_POLICY = Object.freeze({
   gross_margin: {
     below_18: 'required',
@@ -57,6 +57,27 @@ function result(rule_id, matched, outcome, reason, approver_role = null) {
   return { rule_id, matched, outcome, reason, approver_role };
 }
 
+const APPROVER_ROLE_PRIORITY = Object.freeze([
+  '管理職',
+  '技術担当',
+  '購買・外注担当',
+  '業務責任者'
+]);
+
+function actionableApproverRoles(rules) {
+  const roles = [...new Set(rules
+    .filter(rule => ['hold', 'required'].includes(rule.outcome))
+    .map(rule => rule.approver_role)
+    .filter(Boolean))];
+  return roles.sort((left, right) => {
+    const leftIndex = APPROVER_ROLE_PRIORITY.indexOf(left);
+    const rightIndex = APPROVER_ROLE_PRIORITY.indexOf(right);
+    const leftRank = leftIndex === -1 ? APPROVER_ROLE_PRIORITY.length : leftIndex;
+    const rightRank = rightIndex === -1 ? APPROVER_ROLE_PRIORITY.length : rightIndex;
+    return leftRank - rightRank || left.localeCompare(right, 'ja');
+  });
+}
+
 export function evaluateApproval({ extraction, priceAnalysis = null, rawInput }) {
   const input = validateApprovalInput(rawInput);
   const gross = input.planned_price !== null && input.cost !== null
@@ -107,7 +128,9 @@ export function evaluateApproval({ extraction, priceAnalysis = null, rawInput })
     rule_version: APPROVAL_RULE_VERSION,
     extraction_revision: extraction.revision,
     status: outcome,
-    approver_roles: [...new Set(decisive.map(r => r.approver_role).filter(Boolean))],
+    // 全体結果が hold でも、同時成立した required ルールの確認先を失わない。
+    // 例: 加工種別未確定（技術担当）+ 低粗利（管理職）。
+    approver_roles: actionableApproverRoles(rules),
     reason: outcome === 'not_required' ? null : decisive.map(r => r.reason).join(' / '),
     input_values: input,
     calculated_values: calculated,

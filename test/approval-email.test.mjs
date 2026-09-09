@@ -52,6 +52,41 @@ test('技術確認・外注見積は根拠なしでは受け付けず、根拠�
   assert.deepEqual(result.approver_roles, ['技術担当']);
 });
 
+test('保留理由と低粗利承認が重なっても管理職と技術担当の確認先を保持する', () => {
+  const incomplete = extraction({ revision: 1 });
+  incomplete.output_payload.missing_fields = [
+    { field_name: 'product_code' },
+    { field_name: 'material' },
+    { field_name: 'dimensions' },
+    { field_name: 'tolerance' }
+  ];
+  const result = evaluateApproval({
+    extraction: incomplete,
+    priceAnalysis: { status: 'not_executed_process_type' },
+    rawInput: input({ planned_price: 100000, cost: 90000, list_price: 100000 })
+  });
+  assert.equal(result.status, 'hold');
+  assert.deepEqual(result.approver_roles, ['管理職', '技術担当']);
+  assert.ok(result.rule_results.some(rule => rule.rule_id === 'PROCESS-001' && rule.approver_role === '技術担当'));
+  assert.ok(result.rule_results.some(rule => rule.rule_id === 'GM-018' && rule.approver_role === '管理職'));
+});
+
+test('同じ確認先を要求する複数ルールは重複表示しない', () => {
+  const result = evaluateApproval({
+    extraction: extraction(),
+    priceAnalysis: { status: 'comparison_unavailable' },
+    rawInput: input({
+      planned_price: 100000,
+      cost: 90000,
+      list_price: 100000,
+      required_tech_review: true,
+      route_basis: '図面と加工条件の確認が必要'
+    })
+  });
+  assert.equal(result.status, 'hold');
+  assert.deepEqual(result.approver_roles, ['管理職', '技術担当']);
+});
+
 test('ローカル定型文は不足項目を網羅し、価格断定・納期確約・自動送信をしない', () => {
   const data = validateDraftInput({ draft_type: 'customer_inquiry', mode: 'local', recipient_role: '顧客担当者',
     missing_items: [{ id: 'tolerance', label: '公差' }], questions: ['図面の版をご教示ください'],
