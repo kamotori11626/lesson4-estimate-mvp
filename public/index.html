@@ -37,6 +37,7 @@
             <p id="workflow-next-action"></p>
             <button id="workflow-next" type="button">該当箇所へ移動</button>
             <button id="workflow-refresh" type="button">統合状況を再表示</button>
+            <p id="workflow-navigation-message" class="result" role="status" aria-live="polite" hidden></p>
           </div>
           <details><summary>機能間で受け渡した値を見る</summary><div id="workflow-handoffs" class="workflow-handoffs"></div></details>
           <details><summary>各処理の結果をまとめて見る</summary><pre id="workflow-results" class="result"></pre></details>
@@ -74,7 +75,7 @@
           <details open><summary>抽出時の警告・安全上の制限（回答の解消状態とは別）</summary><ul id="ex-warnings"></ul></details>
           <h3>未確定の入力欄</h3><ul id="ex-missing"></ul>
           <p class="notice">後工程への引渡し：不可（未確認下書き）。正式な確認担当・案件別の必須項目・承認条件は未設定です。入力者が原文と確認事項を整理し、業務責任者が確認担当と承認条件を決定するまでは、価格確定・納期保証・顧客送信に使用しないでください。</p>
-          <h3>抽出候補と原文の照合</h3>
+          <h3 id="ex-fields-title">抽出候補と原文の照合</h3>
           <div class="table-scroll"><table><thead><tr><th>項目</th><th>候補・修正下書き</th><th>初回候補の原文引用・位置</th><th>信頼度</th></tr></thead><tbody id="ex-fields"></tbody></table></div>
           <p class="help">原文引用・警告は初回抽出時の記録です。人間が値を修正しても初回の記録は書き換えません。信頼度は正答確率ではありません。対応単位：個・本・枚・台・組・セット・式・箱・袋・kg・g・m・mm。ほかの単位は勝手に換算せず手動確認してください。</p>
           <div id="business-editor">

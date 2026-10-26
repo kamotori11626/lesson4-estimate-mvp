@@ -37,7 +37,7 @@ const auth = createAuth(pool, config);
 const publicDir = path.join(projectDir, 'public');
 const contentTypes = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8' };
 const publicFiles = new Set(['login.html', 'login.js', 'styles.css']);
-const protectedFiles = new Set(['index.html', 'app.js', 'workflow.js', 'extraction.js', 'approval-email.js', 'approval-view.js']);
+const protectedFiles = new Set(['index.html', 'app.js', 'workflow.js', 'workflow-navigation.js', 'extraction.js', 'approval-email.js', 'approval-view.js']);
 const allowedTypes = new Set(['customer', 'product', 'quote', 'request', 'supplier']);
 
 function securityHeaders(type = 'application/json; charset=utf-8') {

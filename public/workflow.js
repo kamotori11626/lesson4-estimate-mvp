@@ -1,3 +1,5 @@
+import { navigateToWorkflowTarget } from './workflow-navigation.js';
+
 const $ = selector => document.querySelector(selector);
 let workflowId = null;
 let refreshSequence = 0;
@@ -96,10 +98,7 @@ async function refresh() {
 }
 
 function goToTarget(target) {
-  const node = document.getElementById(target);
-  if (!node) return;
-  node.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  if (node instanceof HTMLDetailsElement) node.open = true;
+  navigateToWorkflowTarget({ document, targetId: target });
 }
 
 document.addEventListener('click', event => {

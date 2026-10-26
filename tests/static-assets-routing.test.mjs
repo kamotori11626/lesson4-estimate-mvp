@@ -24,3 +24,16 @@ test('メイン画面とログイン画面は同じ元UIのCSSを参照する', 
   assert.match(css, /:root\s*\{/);
   assert.match(css, /background:\s*linear-gradient\(135deg,\s*#153a62,\s*#157e7a\)/);
 });
+
+test('メイン画面から参照するJavaScriptモジュールを認証後にすべて配信する', async () => {
+  const [server, index, workflow] = await Promise.all([
+    readFile(new URL('../src/server.mjs', import.meta.url), 'utf8'),
+    readFile(new URL('../public/index.html', import.meta.url), 'utf8'),
+    readFile(new URL('../public/workflow.js', import.meta.url), 'utf8')
+  ]);
+  const entryModules = [...index.matchAll(/<script type="module" src="\/([^"]+)"/gu)].map(match => match[1]);
+  const importedModules = [...workflow.matchAll(/from ['"]\.\/([^'"]+)['"]/gu)].map(match => match[1]);
+  for (const file of [...entryModules, ...importedModules]) {
+    assert.match(server, new RegExp(`['"]${file.replaceAll('.', '\\.')}['"]`), `${file}を配信許可一覧へ含めます`);
+  }
+});
